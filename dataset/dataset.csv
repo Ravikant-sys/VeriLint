@@ -1,0 +1,3951 @@
+id,category,buggy_file,fixed_file,reasoning,buggy_snippet,fixed_snippet
+01_race_conditions_0,01_race_conditions,dataset/01_race_conditions/sample_0_buggy.v,dataset/01_race_conditions/sample_0_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_0 (
+    input clk,
+    input [63:0] sig_in_0,
+    output reg [63:0] sig_out_0
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_0 = sig_in_0 + 1'b1;
+    end
+endmodule
+","module race_mod_0 (
+    input clk,
+    input [63:0] sig_in_0,
+    output reg [63:0] sig_out_0
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_0 <= sig_in_0 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_1,01_race_conditions,dataset/01_race_conditions/sample_1_buggy.v,dataset/01_race_conditions/sample_1_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_1 (
+    input clk,
+    input [15:0] sig_in_1,
+    output reg [15:0] sig_out_1
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_1 = sig_in_1 + 1'b1;
+    end
+endmodule
+","module race_mod_1 (
+    input clk,
+    input [15:0] sig_in_1,
+    output reg [15:0] sig_out_1
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_1 <= sig_in_1 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_2,01_race_conditions,dataset/01_race_conditions/sample_2_buggy.v,dataset/01_race_conditions/sample_2_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_2 (
+    input clk,
+    input [31:0] sig_in_2,
+    output reg [31:0] sig_out_2
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_2 = sig_in_2 + 1'b1;
+    end
+endmodule
+","module race_mod_2 (
+    input clk,
+    input [31:0] sig_in_2,
+    output reg [31:0] sig_out_2
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_2 <= sig_in_2 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_3,01_race_conditions,dataset/01_race_conditions/sample_3_buggy.v,dataset/01_race_conditions/sample_3_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_3 (
+    input clk,
+    input [31:0] sig_in_3,
+    output reg [31:0] sig_out_3
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_3 = sig_in_3 + 1'b1;
+    end
+endmodule
+","module race_mod_3 (
+    input clk,
+    input [31:0] sig_in_3,
+    output reg [31:0] sig_out_3
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_3 <= sig_in_3 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_4,01_race_conditions,dataset/01_race_conditions/sample_4_buggy.v,dataset/01_race_conditions/sample_4_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_4 (
+    input clk,
+    input [7:0] sig_in_4,
+    output reg [7:0] sig_out_4
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_4 = sig_in_4 + 1'b1;
+    end
+endmodule
+","module race_mod_4 (
+    input clk,
+    input [7:0] sig_in_4,
+    output reg [7:0] sig_out_4
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_4 <= sig_in_4 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_5,01_race_conditions,dataset/01_race_conditions/sample_5_buggy.v,dataset/01_race_conditions/sample_5_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_5 (
+    input clk,
+    input [7:0] sig_in_5,
+    output reg [7:0] sig_out_5
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_5 = sig_in_5 + 1'b1;
+    end
+endmodule
+","module race_mod_5 (
+    input clk,
+    input [7:0] sig_in_5,
+    output reg [7:0] sig_out_5
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_5 <= sig_in_5 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_6,01_race_conditions,dataset/01_race_conditions/sample_6_buggy.v,dataset/01_race_conditions/sample_6_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_6 (
+    input clk,
+    input [31:0] sig_in_6,
+    output reg [31:0] sig_out_6
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_6 = sig_in_6 + 1'b1;
+    end
+endmodule
+","module race_mod_6 (
+    input clk,
+    input [31:0] sig_in_6,
+    output reg [31:0] sig_out_6
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_6 <= sig_in_6 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_7,01_race_conditions,dataset/01_race_conditions/sample_7_buggy.v,dataset/01_race_conditions/sample_7_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_7 (
+    input clk,
+    input [3:0] sig_in_7,
+    output reg [3:0] sig_out_7
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_7 = sig_in_7 + 1'b1;
+    end
+endmodule
+","module race_mod_7 (
+    input clk,
+    input [3:0] sig_in_7,
+    output reg [3:0] sig_out_7
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_7 <= sig_in_7 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_8,01_race_conditions,dataset/01_race_conditions/sample_8_buggy.v,dataset/01_race_conditions/sample_8_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_8 (
+    input clk,
+    input [7:0] sig_in_8,
+    output reg [7:0] sig_out_8
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_8 = sig_in_8 + 1'b1;
+    end
+endmodule
+","module race_mod_8 (
+    input clk,
+    input [7:0] sig_in_8,
+    output reg [7:0] sig_out_8
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_8 <= sig_in_8 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_9,01_race_conditions,dataset/01_race_conditions/sample_9_buggy.v,dataset/01_race_conditions/sample_9_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_9 (
+    input clk,
+    input [63:0] sig_in_9,
+    output reg [63:0] sig_out_9
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_9 = sig_in_9 + 1'b1;
+    end
+endmodule
+","module race_mod_9 (
+    input clk,
+    input [63:0] sig_in_9,
+    output reg [63:0] sig_out_9
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_9 <= sig_in_9 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_10,01_race_conditions,dataset/01_race_conditions/sample_10_buggy.v,dataset/01_race_conditions/sample_10_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_10 (
+    input clk,
+    input [31:0] sig_in_10,
+    output reg [31:0] sig_out_10
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_10 = sig_in_10 + 1'b1;
+    end
+endmodule
+","module race_mod_10 (
+    input clk,
+    input [31:0] sig_in_10,
+    output reg [31:0] sig_out_10
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_10 <= sig_in_10 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_11,01_race_conditions,dataset/01_race_conditions/sample_11_buggy.v,dataset/01_race_conditions/sample_11_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_11 (
+    input clk,
+    input [63:0] sig_in_11,
+    output reg [63:0] sig_out_11
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_11 = sig_in_11 + 1'b1;
+    end
+endmodule
+","module race_mod_11 (
+    input clk,
+    input [63:0] sig_in_11,
+    output reg [63:0] sig_out_11
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_11 <= sig_in_11 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_12,01_race_conditions,dataset/01_race_conditions/sample_12_buggy.v,dataset/01_race_conditions/sample_12_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_12 (
+    input clk,
+    input [7:0] sig_in_12,
+    output reg [7:0] sig_out_12
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_12 = sig_in_12 + 1'b1;
+    end
+endmodule
+","module race_mod_12 (
+    input clk,
+    input [7:0] sig_in_12,
+    output reg [7:0] sig_out_12
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_12 <= sig_in_12 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_13,01_race_conditions,dataset/01_race_conditions/sample_13_buggy.v,dataset/01_race_conditions/sample_13_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_13 (
+    input clk,
+    input [15:0] sig_in_13,
+    output reg [15:0] sig_out_13
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_13 = sig_in_13 + 1'b1;
+    end
+endmodule
+","module race_mod_13 (
+    input clk,
+    input [15:0] sig_in_13,
+    output reg [15:0] sig_out_13
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_13 <= sig_in_13 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_14,01_race_conditions,dataset/01_race_conditions/sample_14_buggy.v,dataset/01_race_conditions/sample_14_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_14 (
+    input clk,
+    input [15:0] sig_in_14,
+    output reg [15:0] sig_out_14
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_14 = sig_in_14 + 1'b1;
+    end
+endmodule
+","module race_mod_14 (
+    input clk,
+    input [15:0] sig_in_14,
+    output reg [15:0] sig_out_14
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_14 <= sig_in_14 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_15,01_race_conditions,dataset/01_race_conditions/sample_15_buggy.v,dataset/01_race_conditions/sample_15_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_15 (
+    input clk,
+    input [31:0] sig_in_15,
+    output reg [31:0] sig_out_15
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_15 = sig_in_15 + 1'b1;
+    end
+endmodule
+","module race_mod_15 (
+    input clk,
+    input [31:0] sig_in_15,
+    output reg [31:0] sig_out_15
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_15 <= sig_in_15 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_16,01_race_conditions,dataset/01_race_conditions/sample_16_buggy.v,dataset/01_race_conditions/sample_16_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_16 (
+    input clk,
+    input [31:0] sig_in_16,
+    output reg [31:0] sig_out_16
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_16 = sig_in_16 + 1'b1;
+    end
+endmodule
+","module race_mod_16 (
+    input clk,
+    input [31:0] sig_in_16,
+    output reg [31:0] sig_out_16
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_16 <= sig_in_16 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_17,01_race_conditions,dataset/01_race_conditions/sample_17_buggy.v,dataset/01_race_conditions/sample_17_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_17 (
+    input clk,
+    input [31:0] sig_in_17,
+    output reg [31:0] sig_out_17
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_17 = sig_in_17 + 1'b1;
+    end
+endmodule
+","module race_mod_17 (
+    input clk,
+    input [31:0] sig_in_17,
+    output reg [31:0] sig_out_17
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_17 <= sig_in_17 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_18,01_race_conditions,dataset/01_race_conditions/sample_18_buggy.v,dataset/01_race_conditions/sample_18_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_18 (
+    input clk,
+    input [15:0] sig_in_18,
+    output reg [15:0] sig_out_18
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_18 = sig_in_18 + 1'b1;
+    end
+endmodule
+","module race_mod_18 (
+    input clk,
+    input [15:0] sig_in_18,
+    output reg [15:0] sig_out_18
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_18 <= sig_in_18 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_19,01_race_conditions,dataset/01_race_conditions/sample_19_buggy.v,dataset/01_race_conditions/sample_19_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_19 (
+    input clk,
+    input [15:0] sig_in_19,
+    output reg [15:0] sig_out_19
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_19 = sig_in_19 + 1'b1;
+    end
+endmodule
+","module race_mod_19 (
+    input clk,
+    input [15:0] sig_in_19,
+    output reg [15:0] sig_out_19
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_19 <= sig_in_19 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_20,01_race_conditions,dataset/01_race_conditions/sample_20_buggy.v,dataset/01_race_conditions/sample_20_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_20 (
+    input clk,
+    input [7:0] sig_in_20,
+    output reg [7:0] sig_out_20
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_20 = sig_in_20 + 1'b1;
+    end
+endmodule
+","module race_mod_20 (
+    input clk,
+    input [7:0] sig_in_20,
+    output reg [7:0] sig_out_20
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_20 <= sig_in_20 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_21,01_race_conditions,dataset/01_race_conditions/sample_21_buggy.v,dataset/01_race_conditions/sample_21_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_21 (
+    input clk,
+    input [63:0] sig_in_21,
+    output reg [63:0] sig_out_21
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_21 = sig_in_21 + 1'b1;
+    end
+endmodule
+","module race_mod_21 (
+    input clk,
+    input [63:0] sig_in_21,
+    output reg [63:0] sig_out_21
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_21 <= sig_in_21 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_22,01_race_conditions,dataset/01_race_conditions/sample_22_buggy.v,dataset/01_race_conditions/sample_22_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_22 (
+    input clk,
+    input [31:0] sig_in_22,
+    output reg [31:0] sig_out_22
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_22 = sig_in_22 + 1'b1;
+    end
+endmodule
+","module race_mod_22 (
+    input clk,
+    input [31:0] sig_in_22,
+    output reg [31:0] sig_out_22
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_22 <= sig_in_22 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_23,01_race_conditions,dataset/01_race_conditions/sample_23_buggy.v,dataset/01_race_conditions/sample_23_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_23 (
+    input clk,
+    input [31:0] sig_in_23,
+    output reg [31:0] sig_out_23
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_23 = sig_in_23 + 1'b1;
+    end
+endmodule
+","module race_mod_23 (
+    input clk,
+    input [31:0] sig_in_23,
+    output reg [31:0] sig_out_23
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_23 <= sig_in_23 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_24,01_race_conditions,dataset/01_race_conditions/sample_24_buggy.v,dataset/01_race_conditions/sample_24_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_24 (
+    input clk,
+    input [7:0] sig_in_24,
+    output reg [7:0] sig_out_24
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_24 = sig_in_24 + 1'b1;
+    end
+endmodule
+","module race_mod_24 (
+    input clk,
+    input [7:0] sig_in_24,
+    output reg [7:0] sig_out_24
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_24 <= sig_in_24 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_25,01_race_conditions,dataset/01_race_conditions/sample_25_buggy.v,dataset/01_race_conditions/sample_25_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_25 (
+    input clk,
+    input [3:0] sig_in_25,
+    output reg [3:0] sig_out_25
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_25 = sig_in_25 + 1'b1;
+    end
+endmodule
+","module race_mod_25 (
+    input clk,
+    input [3:0] sig_in_25,
+    output reg [3:0] sig_out_25
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_25 <= sig_in_25 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_26,01_race_conditions,dataset/01_race_conditions/sample_26_buggy.v,dataset/01_race_conditions/sample_26_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_26 (
+    input clk,
+    input [15:0] sig_in_26,
+    output reg [15:0] sig_out_26
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_26 = sig_in_26 + 1'b1;
+    end
+endmodule
+","module race_mod_26 (
+    input clk,
+    input [15:0] sig_in_26,
+    output reg [15:0] sig_out_26
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_26 <= sig_in_26 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_27,01_race_conditions,dataset/01_race_conditions/sample_27_buggy.v,dataset/01_race_conditions/sample_27_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_27 (
+    input clk,
+    input [7:0] sig_in_27,
+    output reg [7:0] sig_out_27
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_27 = sig_in_27 + 1'b1;
+    end
+endmodule
+","module race_mod_27 (
+    input clk,
+    input [7:0] sig_in_27,
+    output reg [7:0] sig_out_27
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_27 <= sig_in_27 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_28,01_race_conditions,dataset/01_race_conditions/sample_28_buggy.v,dataset/01_race_conditions/sample_28_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_28 (
+    input clk,
+    input [3:0] sig_in_28,
+    output reg [3:0] sig_out_28
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_28 = sig_in_28 + 1'b1;
+    end
+endmodule
+","module race_mod_28 (
+    input clk,
+    input [3:0] sig_in_28,
+    output reg [3:0] sig_out_28
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_28 <= sig_in_28 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_29,01_race_conditions,dataset/01_race_conditions/sample_29_buggy.v,dataset/01_race_conditions/sample_29_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_29 (
+    input clk,
+    input [31:0] sig_in_29,
+    output reg [31:0] sig_out_29
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_29 = sig_in_29 + 1'b1;
+    end
+endmodule
+","module race_mod_29 (
+    input clk,
+    input [31:0] sig_in_29,
+    output reg [31:0] sig_out_29
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_29 <= sig_in_29 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_30,01_race_conditions,dataset/01_race_conditions/sample_30_buggy.v,dataset/01_race_conditions/sample_30_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_30 (
+    input clk,
+    input [15:0] sig_in_30,
+    output reg [15:0] sig_out_30
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_30 = sig_in_30 + 1'b1;
+    end
+endmodule
+","module race_mod_30 (
+    input clk,
+    input [15:0] sig_in_30,
+    output reg [15:0] sig_out_30
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_30 <= sig_in_30 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_31,01_race_conditions,dataset/01_race_conditions/sample_31_buggy.v,dataset/01_race_conditions/sample_31_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_31 (
+    input clk,
+    input [15:0] sig_in_31,
+    output reg [15:0] sig_out_31
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_31 = sig_in_31 + 1'b1;
+    end
+endmodule
+","module race_mod_31 (
+    input clk,
+    input [15:0] sig_in_31,
+    output reg [15:0] sig_out_31
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_31 <= sig_in_31 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_32,01_race_conditions,dataset/01_race_conditions/sample_32_buggy.v,dataset/01_race_conditions/sample_32_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_32 (
+    input clk,
+    input [15:0] sig_in_32,
+    output reg [15:0] sig_out_32
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_32 = sig_in_32 + 1'b1;
+    end
+endmodule
+","module race_mod_32 (
+    input clk,
+    input [15:0] sig_in_32,
+    output reg [15:0] sig_out_32
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_32 <= sig_in_32 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_33,01_race_conditions,dataset/01_race_conditions/sample_33_buggy.v,dataset/01_race_conditions/sample_33_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_33 (
+    input clk,
+    input [3:0] sig_in_33,
+    output reg [3:0] sig_out_33
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_33 = sig_in_33 + 1'b1;
+    end
+endmodule
+","module race_mod_33 (
+    input clk,
+    input [3:0] sig_in_33,
+    output reg [3:0] sig_out_33
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_33 <= sig_in_33 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_34,01_race_conditions,dataset/01_race_conditions/sample_34_buggy.v,dataset/01_race_conditions/sample_34_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_34 (
+    input clk,
+    input [7:0] sig_in_34,
+    output reg [7:0] sig_out_34
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_34 = sig_in_34 + 1'b1;
+    end
+endmodule
+","module race_mod_34 (
+    input clk,
+    input [7:0] sig_in_34,
+    output reg [7:0] sig_out_34
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_34 <= sig_in_34 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_35,01_race_conditions,dataset/01_race_conditions/sample_35_buggy.v,dataset/01_race_conditions/sample_35_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_35 (
+    input clk,
+    input [3:0] sig_in_35,
+    output reg [3:0] sig_out_35
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_35 = sig_in_35 + 1'b1;
+    end
+endmodule
+","module race_mod_35 (
+    input clk,
+    input [3:0] sig_in_35,
+    output reg [3:0] sig_out_35
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_35 <= sig_in_35 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_36,01_race_conditions,dataset/01_race_conditions/sample_36_buggy.v,dataset/01_race_conditions/sample_36_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_36 (
+    input clk,
+    input [3:0] sig_in_36,
+    output reg [3:0] sig_out_36
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_36 = sig_in_36 + 1'b1;
+    end
+endmodule
+","module race_mod_36 (
+    input clk,
+    input [3:0] sig_in_36,
+    output reg [3:0] sig_out_36
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_36 <= sig_in_36 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_37,01_race_conditions,dataset/01_race_conditions/sample_37_buggy.v,dataset/01_race_conditions/sample_37_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_37 (
+    input clk,
+    input [3:0] sig_in_37,
+    output reg [3:0] sig_out_37
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_37 = sig_in_37 + 1'b1;
+    end
+endmodule
+","module race_mod_37 (
+    input clk,
+    input [3:0] sig_in_37,
+    output reg [3:0] sig_out_37
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_37 <= sig_in_37 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_38,01_race_conditions,dataset/01_race_conditions/sample_38_buggy.v,dataset/01_race_conditions/sample_38_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_38 (
+    input clk,
+    input [3:0] sig_in_38,
+    output reg [3:0] sig_out_38
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_38 = sig_in_38 + 1'b1;
+    end
+endmodule
+","module race_mod_38 (
+    input clk,
+    input [3:0] sig_in_38,
+    output reg [3:0] sig_out_38
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_38 <= sig_in_38 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_39,01_race_conditions,dataset/01_race_conditions/sample_39_buggy.v,dataset/01_race_conditions/sample_39_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_39 (
+    input clk,
+    input [3:0] sig_in_39,
+    output reg [3:0] sig_out_39
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_39 = sig_in_39 + 1'b1;
+    end
+endmodule
+","module race_mod_39 (
+    input clk,
+    input [3:0] sig_in_39,
+    output reg [3:0] sig_out_39
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_39 <= sig_in_39 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_40,01_race_conditions,dataset/01_race_conditions/sample_40_buggy.v,dataset/01_race_conditions/sample_40_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_40 (
+    input clk,
+    input [63:0] sig_in_40,
+    output reg [63:0] sig_out_40
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_40 = sig_in_40 + 1'b1;
+    end
+endmodule
+","module race_mod_40 (
+    input clk,
+    input [63:0] sig_in_40,
+    output reg [63:0] sig_out_40
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_40 <= sig_in_40 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_41,01_race_conditions,dataset/01_race_conditions/sample_41_buggy.v,dataset/01_race_conditions/sample_41_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_41 (
+    input clk,
+    input [3:0] sig_in_41,
+    output reg [3:0] sig_out_41
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_41 = sig_in_41 + 1'b1;
+    end
+endmodule
+","module race_mod_41 (
+    input clk,
+    input [3:0] sig_in_41,
+    output reg [3:0] sig_out_41
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_41 <= sig_in_41 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_42,01_race_conditions,dataset/01_race_conditions/sample_42_buggy.v,dataset/01_race_conditions/sample_42_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_42 (
+    input clk,
+    input [63:0] sig_in_42,
+    output reg [63:0] sig_out_42
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_42 = sig_in_42 + 1'b1;
+    end
+endmodule
+","module race_mod_42 (
+    input clk,
+    input [63:0] sig_in_42,
+    output reg [63:0] sig_out_42
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_42 <= sig_in_42 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_43,01_race_conditions,dataset/01_race_conditions/sample_43_buggy.v,dataset/01_race_conditions/sample_43_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_43 (
+    input clk,
+    input [31:0] sig_in_43,
+    output reg [31:0] sig_out_43
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_43 = sig_in_43 + 1'b1;
+    end
+endmodule
+","module race_mod_43 (
+    input clk,
+    input [31:0] sig_in_43,
+    output reg [31:0] sig_out_43
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_43 <= sig_in_43 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_44,01_race_conditions,dataset/01_race_conditions/sample_44_buggy.v,dataset/01_race_conditions/sample_44_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_44 (
+    input clk,
+    input [3:0] sig_in_44,
+    output reg [3:0] sig_out_44
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_44 = sig_in_44 + 1'b1;
+    end
+endmodule
+","module race_mod_44 (
+    input clk,
+    input [3:0] sig_in_44,
+    output reg [3:0] sig_out_44
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_44 <= sig_in_44 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_45,01_race_conditions,dataset/01_race_conditions/sample_45_buggy.v,dataset/01_race_conditions/sample_45_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_45 (
+    input clk,
+    input [15:0] sig_in_45,
+    output reg [15:0] sig_out_45
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_45 = sig_in_45 + 1'b1;
+    end
+endmodule
+","module race_mod_45 (
+    input clk,
+    input [15:0] sig_in_45,
+    output reg [15:0] sig_out_45
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_45 <= sig_in_45 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_46,01_race_conditions,dataset/01_race_conditions/sample_46_buggy.v,dataset/01_race_conditions/sample_46_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_46 (
+    input clk,
+    input [7:0] sig_in_46,
+    output reg [7:0] sig_out_46
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_46 = sig_in_46 + 1'b1;
+    end
+endmodule
+","module race_mod_46 (
+    input clk,
+    input [7:0] sig_in_46,
+    output reg [7:0] sig_out_46
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_46 <= sig_in_46 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_47,01_race_conditions,dataset/01_race_conditions/sample_47_buggy.v,dataset/01_race_conditions/sample_47_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_47 (
+    input clk,
+    input [63:0] sig_in_47,
+    output reg [63:0] sig_out_47
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_47 = sig_in_47 + 1'b1;
+    end
+endmodule
+","module race_mod_47 (
+    input clk,
+    input [63:0] sig_in_47,
+    output reg [63:0] sig_out_47
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_47 <= sig_in_47 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_48,01_race_conditions,dataset/01_race_conditions/sample_48_buggy.v,dataset/01_race_conditions/sample_48_fixed.v,Using blocking assignment '=' in a clocked posedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_48 (
+    input clk,
+    input [31:0] sig_in_48,
+    output reg [31:0] sig_out_48
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(posedge clk) begin
+        sig_out_48 = sig_in_48 + 1'b1;
+    end
+endmodule
+","module race_mod_48 (
+    input clk,
+    input [31:0] sig_in_48,
+    output reg [31:0] sig_out_48
+);
+    // FIX: Use non-blocking assignment
+    always @(posedge clk) begin
+        sig_out_48 <= sig_in_48 + 1'b1;
+    end
+endmodule
+"
+01_race_conditions_49,01_race_conditions,dataset/01_race_conditions/sample_49_buggy.v,dataset/01_race_conditions/sample_49_fixed.v,Using blocking assignment '=' in a clocked negedge clk block causes simulation/synthesis race conditions. Used non-blocking '<=' instead.,"module race_mod_49 (
+    input clk,
+    input [7:0] sig_in_49,
+    output reg [7:0] sig_out_49
+);
+    // BUG: Mixing blocking assignment in sequential logic
+    always @(negedge clk) begin
+        sig_out_49 = sig_in_49 + 1'b1;
+    end
+endmodule
+","module race_mod_49 (
+    input clk,
+    input [7:0] sig_in_49,
+    output reg [7:0] sig_out_49
+);
+    // FIX: Use non-blocking assignment
+    always @(negedge clk) begin
+        sig_out_49 <= sig_in_49 + 1'b1;
+    end
+endmodule
+"
+02_inferred_latches_0,02_inferred_latches,dataset/02_inferred_latches/sample_0_buggy.v,dataset/02_inferred_latches/sample_0_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_0 (
+    input [2:0] sel_0,
+    input en,
+    output reg dec_0
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_0 > 0) begin
+            dec_0 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_0 (
+    input [2:0] sel_0,
+    input en,
+    output reg dec_0
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_0 > 0) begin
+            dec_0 = 1'b1;
+        end else begin
+            dec_0 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_1,02_inferred_latches,dataset/02_inferred_latches/sample_1_buggy.v,dataset/02_inferred_latches/sample_1_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_1 (
+    input [3:0] sel_1,
+    input en,
+    output reg dec_1
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_1 > 0) begin
+            dec_1 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_1 (
+    input [3:0] sel_1,
+    input en,
+    output reg dec_1
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_1 > 0) begin
+            dec_1 = 1'b1;
+        end else begin
+            dec_1 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_2,02_inferred_latches,dataset/02_inferred_latches/sample_2_buggy.v,dataset/02_inferred_latches/sample_2_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_2 (
+    input [1:0] sel_2,
+    input en,
+    output reg dec_2
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_2 > 0) begin
+            dec_2 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_2 (
+    input [1:0] sel_2,
+    input en,
+    output reg dec_2
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_2 > 0) begin
+            dec_2 = 1'b1;
+        end else begin
+            dec_2 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_3,02_inferred_latches,dataset/02_inferred_latches/sample_3_buggy.v,dataset/02_inferred_latches/sample_3_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_3 (
+    input [2:0] sel_3,
+    input en,
+    output reg dec_3
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_3 > 0) begin
+            dec_3 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_3 (
+    input [2:0] sel_3,
+    input en,
+    output reg dec_3
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_3 > 0) begin
+            dec_3 = 1'b1;
+        end else begin
+            dec_3 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_4,02_inferred_latches,dataset/02_inferred_latches/sample_4_buggy.v,dataset/02_inferred_latches/sample_4_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_4 (
+    input [3:0] sel_4,
+    input en,
+    output reg dec_4
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_4 > 0) begin
+            dec_4 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_4 (
+    input [3:0] sel_4,
+    input en,
+    output reg dec_4
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_4 > 0) begin
+            dec_4 = 1'b1;
+        end else begin
+            dec_4 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_5,02_inferred_latches,dataset/02_inferred_latches/sample_5_buggy.v,dataset/02_inferred_latches/sample_5_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_5 (
+    input [3:0] sel_5,
+    input en,
+    output reg dec_5
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_5 > 0) begin
+            dec_5 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_5 (
+    input [3:0] sel_5,
+    input en,
+    output reg dec_5
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_5 > 0) begin
+            dec_5 = 1'b1;
+        end else begin
+            dec_5 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_6,02_inferred_latches,dataset/02_inferred_latches/sample_6_buggy.v,dataset/02_inferred_latches/sample_6_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_6 (
+    input [3:0] sel_6,
+    input en,
+    output reg dec_6
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_6 > 0) begin
+            dec_6 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_6 (
+    input [3:0] sel_6,
+    input en,
+    output reg dec_6
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_6 > 0) begin
+            dec_6 = 1'b1;
+        end else begin
+            dec_6 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_7,02_inferred_latches,dataset/02_inferred_latches/sample_7_buggy.v,dataset/02_inferred_latches/sample_7_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_7 (
+    input [2:0] sel_7,
+    input en,
+    output reg dec_7
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_7 > 0) begin
+            dec_7 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_7 (
+    input [2:0] sel_7,
+    input en,
+    output reg dec_7
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_7 > 0) begin
+            dec_7 = 1'b1;
+        end else begin
+            dec_7 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_8,02_inferred_latches,dataset/02_inferred_latches/sample_8_buggy.v,dataset/02_inferred_latches/sample_8_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_8 (
+    input [2:0] sel_8,
+    input en,
+    output reg dec_8
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_8 > 0) begin
+            dec_8 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_8 (
+    input [2:0] sel_8,
+    input en,
+    output reg dec_8
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_8 > 0) begin
+            dec_8 = 1'b1;
+        end else begin
+            dec_8 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_9,02_inferred_latches,dataset/02_inferred_latches/sample_9_buggy.v,dataset/02_inferred_latches/sample_9_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_9 (
+    input [1:0] sel_9,
+    input en,
+    output reg dec_9
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_9 > 0) begin
+            dec_9 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_9 (
+    input [1:0] sel_9,
+    input en,
+    output reg dec_9
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_9 > 0) begin
+            dec_9 = 1'b1;
+        end else begin
+            dec_9 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_10,02_inferred_latches,dataset/02_inferred_latches/sample_10_buggy.v,dataset/02_inferred_latches/sample_10_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_10 (
+    input [3:0] sel_10,
+    input en,
+    output reg dec_10
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_10 > 0) begin
+            dec_10 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_10 (
+    input [3:0] sel_10,
+    input en,
+    output reg dec_10
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_10 > 0) begin
+            dec_10 = 1'b1;
+        end else begin
+            dec_10 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_11,02_inferred_latches,dataset/02_inferred_latches/sample_11_buggy.v,dataset/02_inferred_latches/sample_11_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_11 (
+    input [2:0] sel_11,
+    input en,
+    output reg dec_11
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_11 > 0) begin
+            dec_11 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_11 (
+    input [2:0] sel_11,
+    input en,
+    output reg dec_11
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_11 > 0) begin
+            dec_11 = 1'b1;
+        end else begin
+            dec_11 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_12,02_inferred_latches,dataset/02_inferred_latches/sample_12_buggy.v,dataset/02_inferred_latches/sample_12_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_12 (
+    input [2:0] sel_12,
+    input en,
+    output reg dec_12
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_12 > 0) begin
+            dec_12 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_12 (
+    input [2:0] sel_12,
+    input en,
+    output reg dec_12
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_12 > 0) begin
+            dec_12 = 1'b1;
+        end else begin
+            dec_12 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_13,02_inferred_latches,dataset/02_inferred_latches/sample_13_buggy.v,dataset/02_inferred_latches/sample_13_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_13 (
+    input [2:0] sel_13,
+    input en,
+    output reg dec_13
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_13 > 0) begin
+            dec_13 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_13 (
+    input [2:0] sel_13,
+    input en,
+    output reg dec_13
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_13 > 0) begin
+            dec_13 = 1'b1;
+        end else begin
+            dec_13 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_14,02_inferred_latches,dataset/02_inferred_latches/sample_14_buggy.v,dataset/02_inferred_latches/sample_14_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_14 (
+    input [2:0] sel_14,
+    input en,
+    output reg dec_14
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_14 > 0) begin
+            dec_14 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_14 (
+    input [2:0] sel_14,
+    input en,
+    output reg dec_14
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_14 > 0) begin
+            dec_14 = 1'b1;
+        end else begin
+            dec_14 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_15,02_inferred_latches,dataset/02_inferred_latches/sample_15_buggy.v,dataset/02_inferred_latches/sample_15_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_15 (
+    input [2:0] sel_15,
+    input en,
+    output reg dec_15
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_15 > 0) begin
+            dec_15 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_15 (
+    input [2:0] sel_15,
+    input en,
+    output reg dec_15
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_15 > 0) begin
+            dec_15 = 1'b1;
+        end else begin
+            dec_15 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_16,02_inferred_latches,dataset/02_inferred_latches/sample_16_buggy.v,dataset/02_inferred_latches/sample_16_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_16 (
+    input [2:0] sel_16,
+    input en,
+    output reg dec_16
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_16 > 0) begin
+            dec_16 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_16 (
+    input [2:0] sel_16,
+    input en,
+    output reg dec_16
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_16 > 0) begin
+            dec_16 = 1'b1;
+        end else begin
+            dec_16 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_17,02_inferred_latches,dataset/02_inferred_latches/sample_17_buggy.v,dataset/02_inferred_latches/sample_17_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_17 (
+    input [3:0] sel_17,
+    input en,
+    output reg dec_17
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_17 > 0) begin
+            dec_17 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_17 (
+    input [3:0] sel_17,
+    input en,
+    output reg dec_17
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_17 > 0) begin
+            dec_17 = 1'b1;
+        end else begin
+            dec_17 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_18,02_inferred_latches,dataset/02_inferred_latches/sample_18_buggy.v,dataset/02_inferred_latches/sample_18_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_18 (
+    input [2:0] sel_18,
+    input en,
+    output reg dec_18
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_18 > 0) begin
+            dec_18 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_18 (
+    input [2:0] sel_18,
+    input en,
+    output reg dec_18
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_18 > 0) begin
+            dec_18 = 1'b1;
+        end else begin
+            dec_18 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_19,02_inferred_latches,dataset/02_inferred_latches/sample_19_buggy.v,dataset/02_inferred_latches/sample_19_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_19 (
+    input [4:0] sel_19,
+    input en,
+    output reg dec_19
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_19 > 0) begin
+            dec_19 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_19 (
+    input [4:0] sel_19,
+    input en,
+    output reg dec_19
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_19 > 0) begin
+            dec_19 = 1'b1;
+        end else begin
+            dec_19 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_20,02_inferred_latches,dataset/02_inferred_latches/sample_20_buggy.v,dataset/02_inferred_latches/sample_20_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_20 (
+    input [3:0] sel_20,
+    input en,
+    output reg dec_20
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_20 > 0) begin
+            dec_20 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_20 (
+    input [3:0] sel_20,
+    input en,
+    output reg dec_20
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_20 > 0) begin
+            dec_20 = 1'b1;
+        end else begin
+            dec_20 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_21,02_inferred_latches,dataset/02_inferred_latches/sample_21_buggy.v,dataset/02_inferred_latches/sample_21_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_21 (
+    input [3:0] sel_21,
+    input en,
+    output reg dec_21
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_21 > 0) begin
+            dec_21 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_21 (
+    input [3:0] sel_21,
+    input en,
+    output reg dec_21
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_21 > 0) begin
+            dec_21 = 1'b1;
+        end else begin
+            dec_21 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_22,02_inferred_latches,dataset/02_inferred_latches/sample_22_buggy.v,dataset/02_inferred_latches/sample_22_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_22 (
+    input [4:0] sel_22,
+    input en,
+    output reg dec_22
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_22 > 0) begin
+            dec_22 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_22 (
+    input [4:0] sel_22,
+    input en,
+    output reg dec_22
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_22 > 0) begin
+            dec_22 = 1'b1;
+        end else begin
+            dec_22 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_23,02_inferred_latches,dataset/02_inferred_latches/sample_23_buggy.v,dataset/02_inferred_latches/sample_23_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_23 (
+    input [4:0] sel_23,
+    input en,
+    output reg dec_23
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_23 > 0) begin
+            dec_23 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_23 (
+    input [4:0] sel_23,
+    input en,
+    output reg dec_23
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_23 > 0) begin
+            dec_23 = 1'b1;
+        end else begin
+            dec_23 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_24,02_inferred_latches,dataset/02_inferred_latches/sample_24_buggy.v,dataset/02_inferred_latches/sample_24_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_24 (
+    input [3:0] sel_24,
+    input en,
+    output reg dec_24
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_24 > 0) begin
+            dec_24 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_24 (
+    input [3:0] sel_24,
+    input en,
+    output reg dec_24
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_24 > 0) begin
+            dec_24 = 1'b1;
+        end else begin
+            dec_24 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_25,02_inferred_latches,dataset/02_inferred_latches/sample_25_buggy.v,dataset/02_inferred_latches/sample_25_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_25 (
+    input [3:0] sel_25,
+    input en,
+    output reg dec_25
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_25 > 0) begin
+            dec_25 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_25 (
+    input [3:0] sel_25,
+    input en,
+    output reg dec_25
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_25 > 0) begin
+            dec_25 = 1'b1;
+        end else begin
+            dec_25 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_26,02_inferred_latches,dataset/02_inferred_latches/sample_26_buggy.v,dataset/02_inferred_latches/sample_26_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_26 (
+    input [1:0] sel_26,
+    input en,
+    output reg dec_26
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_26 > 0) begin
+            dec_26 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_26 (
+    input [1:0] sel_26,
+    input en,
+    output reg dec_26
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_26 > 0) begin
+            dec_26 = 1'b1;
+        end else begin
+            dec_26 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_27,02_inferred_latches,dataset/02_inferred_latches/sample_27_buggy.v,dataset/02_inferred_latches/sample_27_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_27 (
+    input [4:0] sel_27,
+    input en,
+    output reg dec_27
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_27 > 0) begin
+            dec_27 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_27 (
+    input [4:0] sel_27,
+    input en,
+    output reg dec_27
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_27 > 0) begin
+            dec_27 = 1'b1;
+        end else begin
+            dec_27 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_28,02_inferred_latches,dataset/02_inferred_latches/sample_28_buggy.v,dataset/02_inferred_latches/sample_28_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_28 (
+    input [3:0] sel_28,
+    input en,
+    output reg dec_28
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_28 > 0) begin
+            dec_28 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_28 (
+    input [3:0] sel_28,
+    input en,
+    output reg dec_28
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_28 > 0) begin
+            dec_28 = 1'b1;
+        end else begin
+            dec_28 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_29,02_inferred_latches,dataset/02_inferred_latches/sample_29_buggy.v,dataset/02_inferred_latches/sample_29_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_29 (
+    input [1:0] sel_29,
+    input en,
+    output reg dec_29
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_29 > 0) begin
+            dec_29 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_29 (
+    input [1:0] sel_29,
+    input en,
+    output reg dec_29
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_29 > 0) begin
+            dec_29 = 1'b1;
+        end else begin
+            dec_29 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_30,02_inferred_latches,dataset/02_inferred_latches/sample_30_buggy.v,dataset/02_inferred_latches/sample_30_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_30 (
+    input [3:0] sel_30,
+    input en,
+    output reg dec_30
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_30 > 0) begin
+            dec_30 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_30 (
+    input [3:0] sel_30,
+    input en,
+    output reg dec_30
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_30 > 0) begin
+            dec_30 = 1'b1;
+        end else begin
+            dec_30 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_31,02_inferred_latches,dataset/02_inferred_latches/sample_31_buggy.v,dataset/02_inferred_latches/sample_31_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_31 (
+    input [2:0] sel_31,
+    input en,
+    output reg dec_31
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_31 > 0) begin
+            dec_31 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_31 (
+    input [2:0] sel_31,
+    input en,
+    output reg dec_31
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_31 > 0) begin
+            dec_31 = 1'b1;
+        end else begin
+            dec_31 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_32,02_inferred_latches,dataset/02_inferred_latches/sample_32_buggy.v,dataset/02_inferred_latches/sample_32_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_32 (
+    input [2:0] sel_32,
+    input en,
+    output reg dec_32
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_32 > 0) begin
+            dec_32 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_32 (
+    input [2:0] sel_32,
+    input en,
+    output reg dec_32
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_32 > 0) begin
+            dec_32 = 1'b1;
+        end else begin
+            dec_32 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_33,02_inferred_latches,dataset/02_inferred_latches/sample_33_buggy.v,dataset/02_inferred_latches/sample_33_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_33 (
+    input [4:0] sel_33,
+    input en,
+    output reg dec_33
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_33 > 0) begin
+            dec_33 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_33 (
+    input [4:0] sel_33,
+    input en,
+    output reg dec_33
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_33 > 0) begin
+            dec_33 = 1'b1;
+        end else begin
+            dec_33 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_34,02_inferred_latches,dataset/02_inferred_latches/sample_34_buggy.v,dataset/02_inferred_latches/sample_34_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_34 (
+    input [3:0] sel_34,
+    input en,
+    output reg dec_34
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_34 > 0) begin
+            dec_34 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_34 (
+    input [3:0] sel_34,
+    input en,
+    output reg dec_34
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_34 > 0) begin
+            dec_34 = 1'b1;
+        end else begin
+            dec_34 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_35,02_inferred_latches,dataset/02_inferred_latches/sample_35_buggy.v,dataset/02_inferred_latches/sample_35_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_35 (
+    input [3:0] sel_35,
+    input en,
+    output reg dec_35
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_35 > 0) begin
+            dec_35 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_35 (
+    input [3:0] sel_35,
+    input en,
+    output reg dec_35
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_35 > 0) begin
+            dec_35 = 1'b1;
+        end else begin
+            dec_35 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_36,02_inferred_latches,dataset/02_inferred_latches/sample_36_buggy.v,dataset/02_inferred_latches/sample_36_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_36 (
+    input [1:0] sel_36,
+    input en,
+    output reg dec_36
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_36 > 0) begin
+            dec_36 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_36 (
+    input [1:0] sel_36,
+    input en,
+    output reg dec_36
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_36 > 0) begin
+            dec_36 = 1'b1;
+        end else begin
+            dec_36 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_37,02_inferred_latches,dataset/02_inferred_latches/sample_37_buggy.v,dataset/02_inferred_latches/sample_37_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_37 (
+    input [3:0] sel_37,
+    input en,
+    output reg dec_37
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_37 > 0) begin
+            dec_37 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_37 (
+    input [3:0] sel_37,
+    input en,
+    output reg dec_37
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_37 > 0) begin
+            dec_37 = 1'b1;
+        end else begin
+            dec_37 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_38,02_inferred_latches,dataset/02_inferred_latches/sample_38_buggy.v,dataset/02_inferred_latches/sample_38_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_38 (
+    input [3:0] sel_38,
+    input en,
+    output reg dec_38
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_38 > 0) begin
+            dec_38 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_38 (
+    input [3:0] sel_38,
+    input en,
+    output reg dec_38
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_38 > 0) begin
+            dec_38 = 1'b1;
+        end else begin
+            dec_38 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_39,02_inferred_latches,dataset/02_inferred_latches/sample_39_buggy.v,dataset/02_inferred_latches/sample_39_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_39 (
+    input [3:0] sel_39,
+    input en,
+    output reg dec_39
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_39 > 0) begin
+            dec_39 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_39 (
+    input [3:0] sel_39,
+    input en,
+    output reg dec_39
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_39 > 0) begin
+            dec_39 = 1'b1;
+        end else begin
+            dec_39 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_40,02_inferred_latches,dataset/02_inferred_latches/sample_40_buggy.v,dataset/02_inferred_latches/sample_40_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_40 (
+    input [2:0] sel_40,
+    input en,
+    output reg dec_40
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_40 > 0) begin
+            dec_40 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_40 (
+    input [2:0] sel_40,
+    input en,
+    output reg dec_40
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_40 > 0) begin
+            dec_40 = 1'b1;
+        end else begin
+            dec_40 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_41,02_inferred_latches,dataset/02_inferred_latches/sample_41_buggy.v,dataset/02_inferred_latches/sample_41_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_41 (
+    input [3:0] sel_41,
+    input en,
+    output reg dec_41
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_41 > 0) begin
+            dec_41 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_41 (
+    input [3:0] sel_41,
+    input en,
+    output reg dec_41
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_41 > 0) begin
+            dec_41 = 1'b1;
+        end else begin
+            dec_41 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_42,02_inferred_latches,dataset/02_inferred_latches/sample_42_buggy.v,dataset/02_inferred_latches/sample_42_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_42 (
+    input [3:0] sel_42,
+    input en,
+    output reg dec_42
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_42 > 0) begin
+            dec_42 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_42 (
+    input [3:0] sel_42,
+    input en,
+    output reg dec_42
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_42 > 0) begin
+            dec_42 = 1'b1;
+        end else begin
+            dec_42 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_43,02_inferred_latches,dataset/02_inferred_latches/sample_43_buggy.v,dataset/02_inferred_latches/sample_43_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_43 (
+    input [1:0] sel_43,
+    input en,
+    output reg dec_43
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_43 > 0) begin
+            dec_43 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_43 (
+    input [1:0] sel_43,
+    input en,
+    output reg dec_43
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_43 > 0) begin
+            dec_43 = 1'b1;
+        end else begin
+            dec_43 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_44,02_inferred_latches,dataset/02_inferred_latches/sample_44_buggy.v,dataset/02_inferred_latches/sample_44_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_44 (
+    input [4:0] sel_44,
+    input en,
+    output reg dec_44
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_44 > 0) begin
+            dec_44 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_44 (
+    input [4:0] sel_44,
+    input en,
+    output reg dec_44
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_44 > 0) begin
+            dec_44 = 1'b1;
+        end else begin
+            dec_44 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_45,02_inferred_latches,dataset/02_inferred_latches/sample_45_buggy.v,dataset/02_inferred_latches/sample_45_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_45 (
+    input [4:0] sel_45,
+    input en,
+    output reg dec_45
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_45 > 0) begin
+            dec_45 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_45 (
+    input [4:0] sel_45,
+    input en,
+    output reg dec_45
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_45 > 0) begin
+            dec_45 = 1'b1;
+        end else begin
+            dec_45 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_46,02_inferred_latches,dataset/02_inferred_latches/sample_46_buggy.v,dataset/02_inferred_latches/sample_46_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_46 (
+    input [4:0] sel_46,
+    input en,
+    output reg dec_46
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_46 > 0) begin
+            dec_46 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_46 (
+    input [4:0] sel_46,
+    input en,
+    output reg dec_46
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_46 > 0) begin
+            dec_46 = 1'b1;
+        end else begin
+            dec_46 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_47,02_inferred_latches,dataset/02_inferred_latches/sample_47_buggy.v,dataset/02_inferred_latches/sample_47_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_47 (
+    input [3:0] sel_47,
+    input en,
+    output reg dec_47
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_47 > 0) begin
+            dec_47 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_47 (
+    input [3:0] sel_47,
+    input en,
+    output reg dec_47
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_47 > 0) begin
+            dec_47 = 1'b1;
+        end else begin
+            dec_47 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_48,02_inferred_latches,dataset/02_inferred_latches/sample_48_buggy.v,dataset/02_inferred_latches/sample_48_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_48 (
+    input [2:0] sel_48,
+    input en,
+    output reg dec_48
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_48 > 0) begin
+            dec_48 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_48 (
+    input [2:0] sel_48,
+    input en,
+    output reg dec_48
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_48 > 0) begin
+            dec_48 = 1'b1;
+        end else begin
+            dec_48 = 1'b0;
+        end
+    end
+endmodule
+"
+02_inferred_latches_49,02_inferred_latches,dataset/02_inferred_latches/sample_49_buggy.v,dataset/02_inferred_latches/sample_49_fixed.v,"Combinational block has an incomplete if/else branch, inferring an unintended state latch. Added a default else branch.","module latch_mod_49 (
+    input [1:0] sel_49,
+    input en,
+    output reg dec_49
+);
+    // BUG: Incomplete combinational logic
+    always @(*) begin
+        if (en && sel_49 > 0) begin
+            dec_49 = 1'b1;
+        end
+        // Missing else branch creates a transparent latch!
+    end
+endmodule
+","module latch_mod_49 (
+    input [1:0] sel_49,
+    input en,
+    output reg dec_49
+);
+    // FIX: Complete combinational logic
+    always @(*) begin
+        if (en && sel_49 > 0) begin
+            dec_49 = 1'b1;
+        end else begin
+            dec_49 = 1'b0;
+        end
+    end
+endmodule
+"
+03_multi_driver_collisions_0,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_0_buggy.v,dataset/03_multi_driver_collisions/sample_0_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_0 (
+    input clk,
+    input [15:0] port_a_0,
+    input [15:0] port_b_0,
+    output reg [15:0] bus_out_0
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_0 <= port_a_0;
+    end
+
+    always @(negedge clk) begin
+        bus_out_0 <= port_b_0;
+    end
+endmodule
+","module driver_mod_0 (
+    input clk,
+    input [15:0] port_a_0,
+    input [15:0] port_b_0,
+    output reg [15:0] bus_out_0
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_0 <= port_a_0;
+        else 
+            bus_out_0 <= port_b_0;
+    end
+endmodule
+"
+03_multi_driver_collisions_1,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_1_buggy.v,dataset/03_multi_driver_collisions/sample_1_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_1 (
+    input clk,
+    input [15:0] port_a_1,
+    input [15:0] port_b_1,
+    output reg [15:0] bus_out_1
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_1 <= port_a_1;
+    end
+
+    always @(negedge clk) begin
+        bus_out_1 <= port_b_1;
+    end
+endmodule
+","module driver_mod_1 (
+    input clk,
+    input [15:0] port_a_1,
+    input [15:0] port_b_1,
+    output reg [15:0] bus_out_1
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_1 <= port_a_1;
+        else 
+            bus_out_1 <= port_b_1;
+    end
+endmodule
+"
+03_multi_driver_collisions_2,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_2_buggy.v,dataset/03_multi_driver_collisions/sample_2_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_2 (
+    input clk,
+    input [31:0] port_a_2,
+    input [31:0] port_b_2,
+    output reg [31:0] bus_out_2
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_2 <= port_a_2;
+    end
+
+    always @(negedge clk) begin
+        bus_out_2 <= port_b_2;
+    end
+endmodule
+","module driver_mod_2 (
+    input clk,
+    input [31:0] port_a_2,
+    input [31:0] port_b_2,
+    output reg [31:0] bus_out_2
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_2 <= port_a_2;
+        else 
+            bus_out_2 <= port_b_2;
+    end
+endmodule
+"
+03_multi_driver_collisions_3,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_3_buggy.v,dataset/03_multi_driver_collisions/sample_3_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_3 (
+    input clk,
+    input [15:0] port_a_3,
+    input [15:0] port_b_3,
+    output reg [15:0] bus_out_3
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_3 <= port_a_3;
+    end
+
+    always @(negedge clk) begin
+        bus_out_3 <= port_b_3;
+    end
+endmodule
+","module driver_mod_3 (
+    input clk,
+    input [15:0] port_a_3,
+    input [15:0] port_b_3,
+    output reg [15:0] bus_out_3
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_3 <= port_a_3;
+        else 
+            bus_out_3 <= port_b_3;
+    end
+endmodule
+"
+03_multi_driver_collisions_4,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_4_buggy.v,dataset/03_multi_driver_collisions/sample_4_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_4 (
+    input clk,
+    input [15:0] port_a_4,
+    input [15:0] port_b_4,
+    output reg [15:0] bus_out_4
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_4 <= port_a_4;
+    end
+
+    always @(negedge clk) begin
+        bus_out_4 <= port_b_4;
+    end
+endmodule
+","module driver_mod_4 (
+    input clk,
+    input [15:0] port_a_4,
+    input [15:0] port_b_4,
+    output reg [15:0] bus_out_4
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_4 <= port_a_4;
+        else 
+            bus_out_4 <= port_b_4;
+    end
+endmodule
+"
+03_multi_driver_collisions_5,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_5_buggy.v,dataset/03_multi_driver_collisions/sample_5_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_5 (
+    input clk,
+    input [31:0] port_a_5,
+    input [31:0] port_b_5,
+    output reg [31:0] bus_out_5
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_5 <= port_a_5;
+    end
+
+    always @(negedge clk) begin
+        bus_out_5 <= port_b_5;
+    end
+endmodule
+","module driver_mod_5 (
+    input clk,
+    input [31:0] port_a_5,
+    input [31:0] port_b_5,
+    output reg [31:0] bus_out_5
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_5 <= port_a_5;
+        else 
+            bus_out_5 <= port_b_5;
+    end
+endmodule
+"
+03_multi_driver_collisions_6,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_6_buggy.v,dataset/03_multi_driver_collisions/sample_6_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_6 (
+    input clk,
+    input [7:0] port_a_6,
+    input [7:0] port_b_6,
+    output reg [7:0] bus_out_6
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_6 <= port_a_6;
+    end
+
+    always @(negedge clk) begin
+        bus_out_6 <= port_b_6;
+    end
+endmodule
+","module driver_mod_6 (
+    input clk,
+    input [7:0] port_a_6,
+    input [7:0] port_b_6,
+    output reg [7:0] bus_out_6
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_6 <= port_a_6;
+        else 
+            bus_out_6 <= port_b_6;
+    end
+endmodule
+"
+03_multi_driver_collisions_7,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_7_buggy.v,dataset/03_multi_driver_collisions/sample_7_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_7 (
+    input clk,
+    input [7:0] port_a_7,
+    input [7:0] port_b_7,
+    output reg [7:0] bus_out_7
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_7 <= port_a_7;
+    end
+
+    always @(negedge clk) begin
+        bus_out_7 <= port_b_7;
+    end
+endmodule
+","module driver_mod_7 (
+    input clk,
+    input [7:0] port_a_7,
+    input [7:0] port_b_7,
+    output reg [7:0] bus_out_7
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_7 <= port_a_7;
+        else 
+            bus_out_7 <= port_b_7;
+    end
+endmodule
+"
+03_multi_driver_collisions_8,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_8_buggy.v,dataset/03_multi_driver_collisions/sample_8_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_8 (
+    input clk,
+    input [15:0] port_a_8,
+    input [15:0] port_b_8,
+    output reg [15:0] bus_out_8
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_8 <= port_a_8;
+    end
+
+    always @(negedge clk) begin
+        bus_out_8 <= port_b_8;
+    end
+endmodule
+","module driver_mod_8 (
+    input clk,
+    input [15:0] port_a_8,
+    input [15:0] port_b_8,
+    output reg [15:0] bus_out_8
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_8 <= port_a_8;
+        else 
+            bus_out_8 <= port_b_8;
+    end
+endmodule
+"
+03_multi_driver_collisions_9,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_9_buggy.v,dataset/03_multi_driver_collisions/sample_9_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_9 (
+    input clk,
+    input [31:0] port_a_9,
+    input [31:0] port_b_9,
+    output reg [31:0] bus_out_9
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_9 <= port_a_9;
+    end
+
+    always @(negedge clk) begin
+        bus_out_9 <= port_b_9;
+    end
+endmodule
+","module driver_mod_9 (
+    input clk,
+    input [31:0] port_a_9,
+    input [31:0] port_b_9,
+    output reg [31:0] bus_out_9
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_9 <= port_a_9;
+        else 
+            bus_out_9 <= port_b_9;
+    end
+endmodule
+"
+03_multi_driver_collisions_10,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_10_buggy.v,dataset/03_multi_driver_collisions/sample_10_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_10 (
+    input clk,
+    input [7:0] port_a_10,
+    input [7:0] port_b_10,
+    output reg [7:0] bus_out_10
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_10 <= port_a_10;
+    end
+
+    always @(negedge clk) begin
+        bus_out_10 <= port_b_10;
+    end
+endmodule
+","module driver_mod_10 (
+    input clk,
+    input [7:0] port_a_10,
+    input [7:0] port_b_10,
+    output reg [7:0] bus_out_10
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_10 <= port_a_10;
+        else 
+            bus_out_10 <= port_b_10;
+    end
+endmodule
+"
+03_multi_driver_collisions_11,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_11_buggy.v,dataset/03_multi_driver_collisions/sample_11_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_11 (
+    input clk,
+    input [15:0] port_a_11,
+    input [15:0] port_b_11,
+    output reg [15:0] bus_out_11
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_11 <= port_a_11;
+    end
+
+    always @(negedge clk) begin
+        bus_out_11 <= port_b_11;
+    end
+endmodule
+","module driver_mod_11 (
+    input clk,
+    input [15:0] port_a_11,
+    input [15:0] port_b_11,
+    output reg [15:0] bus_out_11
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_11 <= port_a_11;
+        else 
+            bus_out_11 <= port_b_11;
+    end
+endmodule
+"
+03_multi_driver_collisions_12,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_12_buggy.v,dataset/03_multi_driver_collisions/sample_12_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_12 (
+    input clk,
+    input [31:0] port_a_12,
+    input [31:0] port_b_12,
+    output reg [31:0] bus_out_12
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_12 <= port_a_12;
+    end
+
+    always @(negedge clk) begin
+        bus_out_12 <= port_b_12;
+    end
+endmodule
+","module driver_mod_12 (
+    input clk,
+    input [31:0] port_a_12,
+    input [31:0] port_b_12,
+    output reg [31:0] bus_out_12
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_12 <= port_a_12;
+        else 
+            bus_out_12 <= port_b_12;
+    end
+endmodule
+"
+03_multi_driver_collisions_13,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_13_buggy.v,dataset/03_multi_driver_collisions/sample_13_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_13 (
+    input clk,
+    input [15:0] port_a_13,
+    input [15:0] port_b_13,
+    output reg [15:0] bus_out_13
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_13 <= port_a_13;
+    end
+
+    always @(negedge clk) begin
+        bus_out_13 <= port_b_13;
+    end
+endmodule
+","module driver_mod_13 (
+    input clk,
+    input [15:0] port_a_13,
+    input [15:0] port_b_13,
+    output reg [15:0] bus_out_13
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_13 <= port_a_13;
+        else 
+            bus_out_13 <= port_b_13;
+    end
+endmodule
+"
+03_multi_driver_collisions_14,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_14_buggy.v,dataset/03_multi_driver_collisions/sample_14_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_14 (
+    input clk,
+    input [7:0] port_a_14,
+    input [7:0] port_b_14,
+    output reg [7:0] bus_out_14
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_14 <= port_a_14;
+    end
+
+    always @(negedge clk) begin
+        bus_out_14 <= port_b_14;
+    end
+endmodule
+","module driver_mod_14 (
+    input clk,
+    input [7:0] port_a_14,
+    input [7:0] port_b_14,
+    output reg [7:0] bus_out_14
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_14 <= port_a_14;
+        else 
+            bus_out_14 <= port_b_14;
+    end
+endmodule
+"
+03_multi_driver_collisions_15,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_15_buggy.v,dataset/03_multi_driver_collisions/sample_15_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_15 (
+    input clk,
+    input [31:0] port_a_15,
+    input [31:0] port_b_15,
+    output reg [31:0] bus_out_15
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_15 <= port_a_15;
+    end
+
+    always @(negedge clk) begin
+        bus_out_15 <= port_b_15;
+    end
+endmodule
+","module driver_mod_15 (
+    input clk,
+    input [31:0] port_a_15,
+    input [31:0] port_b_15,
+    output reg [31:0] bus_out_15
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_15 <= port_a_15;
+        else 
+            bus_out_15 <= port_b_15;
+    end
+endmodule
+"
+03_multi_driver_collisions_16,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_16_buggy.v,dataset/03_multi_driver_collisions/sample_16_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_16 (
+    input clk,
+    input [31:0] port_a_16,
+    input [31:0] port_b_16,
+    output reg [31:0] bus_out_16
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_16 <= port_a_16;
+    end
+
+    always @(negedge clk) begin
+        bus_out_16 <= port_b_16;
+    end
+endmodule
+","module driver_mod_16 (
+    input clk,
+    input [31:0] port_a_16,
+    input [31:0] port_b_16,
+    output reg [31:0] bus_out_16
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_16 <= port_a_16;
+        else 
+            bus_out_16 <= port_b_16;
+    end
+endmodule
+"
+03_multi_driver_collisions_17,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_17_buggy.v,dataset/03_multi_driver_collisions/sample_17_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_17 (
+    input clk,
+    input [31:0] port_a_17,
+    input [31:0] port_b_17,
+    output reg [31:0] bus_out_17
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_17 <= port_a_17;
+    end
+
+    always @(negedge clk) begin
+        bus_out_17 <= port_b_17;
+    end
+endmodule
+","module driver_mod_17 (
+    input clk,
+    input [31:0] port_a_17,
+    input [31:0] port_b_17,
+    output reg [31:0] bus_out_17
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_17 <= port_a_17;
+        else 
+            bus_out_17 <= port_b_17;
+    end
+endmodule
+"
+03_multi_driver_collisions_18,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_18_buggy.v,dataset/03_multi_driver_collisions/sample_18_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_18 (
+    input clk,
+    input [31:0] port_a_18,
+    input [31:0] port_b_18,
+    output reg [31:0] bus_out_18
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_18 <= port_a_18;
+    end
+
+    always @(negedge clk) begin
+        bus_out_18 <= port_b_18;
+    end
+endmodule
+","module driver_mod_18 (
+    input clk,
+    input [31:0] port_a_18,
+    input [31:0] port_b_18,
+    output reg [31:0] bus_out_18
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_18 <= port_a_18;
+        else 
+            bus_out_18 <= port_b_18;
+    end
+endmodule
+"
+03_multi_driver_collisions_19,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_19_buggy.v,dataset/03_multi_driver_collisions/sample_19_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_19 (
+    input clk,
+    input [31:0] port_a_19,
+    input [31:0] port_b_19,
+    output reg [31:0] bus_out_19
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_19 <= port_a_19;
+    end
+
+    always @(negedge clk) begin
+        bus_out_19 <= port_b_19;
+    end
+endmodule
+","module driver_mod_19 (
+    input clk,
+    input [31:0] port_a_19,
+    input [31:0] port_b_19,
+    output reg [31:0] bus_out_19
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_19 <= port_a_19;
+        else 
+            bus_out_19 <= port_b_19;
+    end
+endmodule
+"
+03_multi_driver_collisions_20,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_20_buggy.v,dataset/03_multi_driver_collisions/sample_20_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_20 (
+    input clk,
+    input [15:0] port_a_20,
+    input [15:0] port_b_20,
+    output reg [15:0] bus_out_20
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_20 <= port_a_20;
+    end
+
+    always @(negedge clk) begin
+        bus_out_20 <= port_b_20;
+    end
+endmodule
+","module driver_mod_20 (
+    input clk,
+    input [15:0] port_a_20,
+    input [15:0] port_b_20,
+    output reg [15:0] bus_out_20
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_20 <= port_a_20;
+        else 
+            bus_out_20 <= port_b_20;
+    end
+endmodule
+"
+03_multi_driver_collisions_21,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_21_buggy.v,dataset/03_multi_driver_collisions/sample_21_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_21 (
+    input clk,
+    input [31:0] port_a_21,
+    input [31:0] port_b_21,
+    output reg [31:0] bus_out_21
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_21 <= port_a_21;
+    end
+
+    always @(negedge clk) begin
+        bus_out_21 <= port_b_21;
+    end
+endmodule
+","module driver_mod_21 (
+    input clk,
+    input [31:0] port_a_21,
+    input [31:0] port_b_21,
+    output reg [31:0] bus_out_21
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_21 <= port_a_21;
+        else 
+            bus_out_21 <= port_b_21;
+    end
+endmodule
+"
+03_multi_driver_collisions_22,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_22_buggy.v,dataset/03_multi_driver_collisions/sample_22_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_22 (
+    input clk,
+    input [31:0] port_a_22,
+    input [31:0] port_b_22,
+    output reg [31:0] bus_out_22
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_22 <= port_a_22;
+    end
+
+    always @(negedge clk) begin
+        bus_out_22 <= port_b_22;
+    end
+endmodule
+","module driver_mod_22 (
+    input clk,
+    input [31:0] port_a_22,
+    input [31:0] port_b_22,
+    output reg [31:0] bus_out_22
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_22 <= port_a_22;
+        else 
+            bus_out_22 <= port_b_22;
+    end
+endmodule
+"
+03_multi_driver_collisions_23,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_23_buggy.v,dataset/03_multi_driver_collisions/sample_23_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_23 (
+    input clk,
+    input [15:0] port_a_23,
+    input [15:0] port_b_23,
+    output reg [15:0] bus_out_23
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_23 <= port_a_23;
+    end
+
+    always @(negedge clk) begin
+        bus_out_23 <= port_b_23;
+    end
+endmodule
+","module driver_mod_23 (
+    input clk,
+    input [15:0] port_a_23,
+    input [15:0] port_b_23,
+    output reg [15:0] bus_out_23
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_23 <= port_a_23;
+        else 
+            bus_out_23 <= port_b_23;
+    end
+endmodule
+"
+03_multi_driver_collisions_24,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_24_buggy.v,dataset/03_multi_driver_collisions/sample_24_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_24 (
+    input clk,
+    input [15:0] port_a_24,
+    input [15:0] port_b_24,
+    output reg [15:0] bus_out_24
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_24 <= port_a_24;
+    end
+
+    always @(negedge clk) begin
+        bus_out_24 <= port_b_24;
+    end
+endmodule
+","module driver_mod_24 (
+    input clk,
+    input [15:0] port_a_24,
+    input [15:0] port_b_24,
+    output reg [15:0] bus_out_24
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_24 <= port_a_24;
+        else 
+            bus_out_24 <= port_b_24;
+    end
+endmodule
+"
+03_multi_driver_collisions_25,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_25_buggy.v,dataset/03_multi_driver_collisions/sample_25_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_25 (
+    input clk,
+    input [7:0] port_a_25,
+    input [7:0] port_b_25,
+    output reg [7:0] bus_out_25
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_25 <= port_a_25;
+    end
+
+    always @(negedge clk) begin
+        bus_out_25 <= port_b_25;
+    end
+endmodule
+","module driver_mod_25 (
+    input clk,
+    input [7:0] port_a_25,
+    input [7:0] port_b_25,
+    output reg [7:0] bus_out_25
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_25 <= port_a_25;
+        else 
+            bus_out_25 <= port_b_25;
+    end
+endmodule
+"
+03_multi_driver_collisions_26,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_26_buggy.v,dataset/03_multi_driver_collisions/sample_26_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_26 (
+    input clk,
+    input [7:0] port_a_26,
+    input [7:0] port_b_26,
+    output reg [7:0] bus_out_26
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_26 <= port_a_26;
+    end
+
+    always @(negedge clk) begin
+        bus_out_26 <= port_b_26;
+    end
+endmodule
+","module driver_mod_26 (
+    input clk,
+    input [7:0] port_a_26,
+    input [7:0] port_b_26,
+    output reg [7:0] bus_out_26
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_26 <= port_a_26;
+        else 
+            bus_out_26 <= port_b_26;
+    end
+endmodule
+"
+03_multi_driver_collisions_27,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_27_buggy.v,dataset/03_multi_driver_collisions/sample_27_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_27 (
+    input clk,
+    input [7:0] port_a_27,
+    input [7:0] port_b_27,
+    output reg [7:0] bus_out_27
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_27 <= port_a_27;
+    end
+
+    always @(negedge clk) begin
+        bus_out_27 <= port_b_27;
+    end
+endmodule
+","module driver_mod_27 (
+    input clk,
+    input [7:0] port_a_27,
+    input [7:0] port_b_27,
+    output reg [7:0] bus_out_27
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_27 <= port_a_27;
+        else 
+            bus_out_27 <= port_b_27;
+    end
+endmodule
+"
+03_multi_driver_collisions_28,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_28_buggy.v,dataset/03_multi_driver_collisions/sample_28_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_28 (
+    input clk,
+    input [31:0] port_a_28,
+    input [31:0] port_b_28,
+    output reg [31:0] bus_out_28
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_28 <= port_a_28;
+    end
+
+    always @(negedge clk) begin
+        bus_out_28 <= port_b_28;
+    end
+endmodule
+","module driver_mod_28 (
+    input clk,
+    input [31:0] port_a_28,
+    input [31:0] port_b_28,
+    output reg [31:0] bus_out_28
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_28 <= port_a_28;
+        else 
+            bus_out_28 <= port_b_28;
+    end
+endmodule
+"
+03_multi_driver_collisions_29,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_29_buggy.v,dataset/03_multi_driver_collisions/sample_29_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_29 (
+    input clk,
+    input [31:0] port_a_29,
+    input [31:0] port_b_29,
+    output reg [31:0] bus_out_29
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_29 <= port_a_29;
+    end
+
+    always @(negedge clk) begin
+        bus_out_29 <= port_b_29;
+    end
+endmodule
+","module driver_mod_29 (
+    input clk,
+    input [31:0] port_a_29,
+    input [31:0] port_b_29,
+    output reg [31:0] bus_out_29
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_29 <= port_a_29;
+        else 
+            bus_out_29 <= port_b_29;
+    end
+endmodule
+"
+03_multi_driver_collisions_30,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_30_buggy.v,dataset/03_multi_driver_collisions/sample_30_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_30 (
+    input clk,
+    input [31:0] port_a_30,
+    input [31:0] port_b_30,
+    output reg [31:0] bus_out_30
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_30 <= port_a_30;
+    end
+
+    always @(negedge clk) begin
+        bus_out_30 <= port_b_30;
+    end
+endmodule
+","module driver_mod_30 (
+    input clk,
+    input [31:0] port_a_30,
+    input [31:0] port_b_30,
+    output reg [31:0] bus_out_30
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_30 <= port_a_30;
+        else 
+            bus_out_30 <= port_b_30;
+    end
+endmodule
+"
+03_multi_driver_collisions_31,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_31_buggy.v,dataset/03_multi_driver_collisions/sample_31_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_31 (
+    input clk,
+    input [7:0] port_a_31,
+    input [7:0] port_b_31,
+    output reg [7:0] bus_out_31
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_31 <= port_a_31;
+    end
+
+    always @(negedge clk) begin
+        bus_out_31 <= port_b_31;
+    end
+endmodule
+","module driver_mod_31 (
+    input clk,
+    input [7:0] port_a_31,
+    input [7:0] port_b_31,
+    output reg [7:0] bus_out_31
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_31 <= port_a_31;
+        else 
+            bus_out_31 <= port_b_31;
+    end
+endmodule
+"
+03_multi_driver_collisions_32,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_32_buggy.v,dataset/03_multi_driver_collisions/sample_32_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_32 (
+    input clk,
+    input [31:0] port_a_32,
+    input [31:0] port_b_32,
+    output reg [31:0] bus_out_32
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_32 <= port_a_32;
+    end
+
+    always @(negedge clk) begin
+        bus_out_32 <= port_b_32;
+    end
+endmodule
+","module driver_mod_32 (
+    input clk,
+    input [31:0] port_a_32,
+    input [31:0] port_b_32,
+    output reg [31:0] bus_out_32
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_32 <= port_a_32;
+        else 
+            bus_out_32 <= port_b_32;
+    end
+endmodule
+"
+03_multi_driver_collisions_33,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_33_buggy.v,dataset/03_multi_driver_collisions/sample_33_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_33 (
+    input clk,
+    input [31:0] port_a_33,
+    input [31:0] port_b_33,
+    output reg [31:0] bus_out_33
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_33 <= port_a_33;
+    end
+
+    always @(negedge clk) begin
+        bus_out_33 <= port_b_33;
+    end
+endmodule
+","module driver_mod_33 (
+    input clk,
+    input [31:0] port_a_33,
+    input [31:0] port_b_33,
+    output reg [31:0] bus_out_33
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_33 <= port_a_33;
+        else 
+            bus_out_33 <= port_b_33;
+    end
+endmodule
+"
+03_multi_driver_collisions_34,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_34_buggy.v,dataset/03_multi_driver_collisions/sample_34_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_34 (
+    input clk,
+    input [15:0] port_a_34,
+    input [15:0] port_b_34,
+    output reg [15:0] bus_out_34
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_34 <= port_a_34;
+    end
+
+    always @(negedge clk) begin
+        bus_out_34 <= port_b_34;
+    end
+endmodule
+","module driver_mod_34 (
+    input clk,
+    input [15:0] port_a_34,
+    input [15:0] port_b_34,
+    output reg [15:0] bus_out_34
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_34 <= port_a_34;
+        else 
+            bus_out_34 <= port_b_34;
+    end
+endmodule
+"
+03_multi_driver_collisions_35,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_35_buggy.v,dataset/03_multi_driver_collisions/sample_35_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_35 (
+    input clk,
+    input [15:0] port_a_35,
+    input [15:0] port_b_35,
+    output reg [15:0] bus_out_35
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_35 <= port_a_35;
+    end
+
+    always @(negedge clk) begin
+        bus_out_35 <= port_b_35;
+    end
+endmodule
+","module driver_mod_35 (
+    input clk,
+    input [15:0] port_a_35,
+    input [15:0] port_b_35,
+    output reg [15:0] bus_out_35
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_35 <= port_a_35;
+        else 
+            bus_out_35 <= port_b_35;
+    end
+endmodule
+"
+03_multi_driver_collisions_36,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_36_buggy.v,dataset/03_multi_driver_collisions/sample_36_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_36 (
+    input clk,
+    input [15:0] port_a_36,
+    input [15:0] port_b_36,
+    output reg [15:0] bus_out_36
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_36 <= port_a_36;
+    end
+
+    always @(negedge clk) begin
+        bus_out_36 <= port_b_36;
+    end
+endmodule
+","module driver_mod_36 (
+    input clk,
+    input [15:0] port_a_36,
+    input [15:0] port_b_36,
+    output reg [15:0] bus_out_36
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_36 <= port_a_36;
+        else 
+            bus_out_36 <= port_b_36;
+    end
+endmodule
+"
+03_multi_driver_collisions_37,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_37_buggy.v,dataset/03_multi_driver_collisions/sample_37_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_37 (
+    input clk,
+    input [15:0] port_a_37,
+    input [15:0] port_b_37,
+    output reg [15:0] bus_out_37
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_37 <= port_a_37;
+    end
+
+    always @(negedge clk) begin
+        bus_out_37 <= port_b_37;
+    end
+endmodule
+","module driver_mod_37 (
+    input clk,
+    input [15:0] port_a_37,
+    input [15:0] port_b_37,
+    output reg [15:0] bus_out_37
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_37 <= port_a_37;
+        else 
+            bus_out_37 <= port_b_37;
+    end
+endmodule
+"
+03_multi_driver_collisions_38,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_38_buggy.v,dataset/03_multi_driver_collisions/sample_38_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_38 (
+    input clk,
+    input [7:0] port_a_38,
+    input [7:0] port_b_38,
+    output reg [7:0] bus_out_38
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_38 <= port_a_38;
+    end
+
+    always @(negedge clk) begin
+        bus_out_38 <= port_b_38;
+    end
+endmodule
+","module driver_mod_38 (
+    input clk,
+    input [7:0] port_a_38,
+    input [7:0] port_b_38,
+    output reg [7:0] bus_out_38
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_38 <= port_a_38;
+        else 
+            bus_out_38 <= port_b_38;
+    end
+endmodule
+"
+03_multi_driver_collisions_39,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_39_buggy.v,dataset/03_multi_driver_collisions/sample_39_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_39 (
+    input clk,
+    input [7:0] port_a_39,
+    input [7:0] port_b_39,
+    output reg [7:0] bus_out_39
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_39 <= port_a_39;
+    end
+
+    always @(negedge clk) begin
+        bus_out_39 <= port_b_39;
+    end
+endmodule
+","module driver_mod_39 (
+    input clk,
+    input [7:0] port_a_39,
+    input [7:0] port_b_39,
+    output reg [7:0] bus_out_39
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_39 <= port_a_39;
+        else 
+            bus_out_39 <= port_b_39;
+    end
+endmodule
+"
+03_multi_driver_collisions_40,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_40_buggy.v,dataset/03_multi_driver_collisions/sample_40_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_40 (
+    input clk,
+    input [7:0] port_a_40,
+    input [7:0] port_b_40,
+    output reg [7:0] bus_out_40
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_40 <= port_a_40;
+    end
+
+    always @(negedge clk) begin
+        bus_out_40 <= port_b_40;
+    end
+endmodule
+","module driver_mod_40 (
+    input clk,
+    input [7:0] port_a_40,
+    input [7:0] port_b_40,
+    output reg [7:0] bus_out_40
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_40 <= port_a_40;
+        else 
+            bus_out_40 <= port_b_40;
+    end
+endmodule
+"
+03_multi_driver_collisions_41,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_41_buggy.v,dataset/03_multi_driver_collisions/sample_41_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_41 (
+    input clk,
+    input [15:0] port_a_41,
+    input [15:0] port_b_41,
+    output reg [15:0] bus_out_41
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_41 <= port_a_41;
+    end
+
+    always @(negedge clk) begin
+        bus_out_41 <= port_b_41;
+    end
+endmodule
+","module driver_mod_41 (
+    input clk,
+    input [15:0] port_a_41,
+    input [15:0] port_b_41,
+    output reg [15:0] bus_out_41
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_41 <= port_a_41;
+        else 
+            bus_out_41 <= port_b_41;
+    end
+endmodule
+"
+03_multi_driver_collisions_42,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_42_buggy.v,dataset/03_multi_driver_collisions/sample_42_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_42 (
+    input clk,
+    input [7:0] port_a_42,
+    input [7:0] port_b_42,
+    output reg [7:0] bus_out_42
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_42 <= port_a_42;
+    end
+
+    always @(negedge clk) begin
+        bus_out_42 <= port_b_42;
+    end
+endmodule
+","module driver_mod_42 (
+    input clk,
+    input [7:0] port_a_42,
+    input [7:0] port_b_42,
+    output reg [7:0] bus_out_42
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_42 <= port_a_42;
+        else 
+            bus_out_42 <= port_b_42;
+    end
+endmodule
+"
+03_multi_driver_collisions_43,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_43_buggy.v,dataset/03_multi_driver_collisions/sample_43_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_43 (
+    input clk,
+    input [31:0] port_a_43,
+    input [31:0] port_b_43,
+    output reg [31:0] bus_out_43
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_43 <= port_a_43;
+    end
+
+    always @(negedge clk) begin
+        bus_out_43 <= port_b_43;
+    end
+endmodule
+","module driver_mod_43 (
+    input clk,
+    input [31:0] port_a_43,
+    input [31:0] port_b_43,
+    output reg [31:0] bus_out_43
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_43 <= port_a_43;
+        else 
+            bus_out_43 <= port_b_43;
+    end
+endmodule
+"
+03_multi_driver_collisions_44,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_44_buggy.v,dataset/03_multi_driver_collisions/sample_44_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_44 (
+    input clk,
+    input [15:0] port_a_44,
+    input [15:0] port_b_44,
+    output reg [15:0] bus_out_44
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_44 <= port_a_44;
+    end
+
+    always @(negedge clk) begin
+        bus_out_44 <= port_b_44;
+    end
+endmodule
+","module driver_mod_44 (
+    input clk,
+    input [15:0] port_a_44,
+    input [15:0] port_b_44,
+    output reg [15:0] bus_out_44
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_44 <= port_a_44;
+        else 
+            bus_out_44 <= port_b_44;
+    end
+endmodule
+"
+03_multi_driver_collisions_45,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_45_buggy.v,dataset/03_multi_driver_collisions/sample_45_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_45 (
+    input clk,
+    input [15:0] port_a_45,
+    input [15:0] port_b_45,
+    output reg [15:0] bus_out_45
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_45 <= port_a_45;
+    end
+
+    always @(negedge clk) begin
+        bus_out_45 <= port_b_45;
+    end
+endmodule
+","module driver_mod_45 (
+    input clk,
+    input [15:0] port_a_45,
+    input [15:0] port_b_45,
+    output reg [15:0] bus_out_45
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_45 <= port_a_45;
+        else 
+            bus_out_45 <= port_b_45;
+    end
+endmodule
+"
+03_multi_driver_collisions_46,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_46_buggy.v,dataset/03_multi_driver_collisions/sample_46_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_46 (
+    input clk,
+    input [7:0] port_a_46,
+    input [7:0] port_b_46,
+    output reg [7:0] bus_out_46
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_46 <= port_a_46;
+    end
+
+    always @(negedge clk) begin
+        bus_out_46 <= port_b_46;
+    end
+endmodule
+","module driver_mod_46 (
+    input clk,
+    input [7:0] port_a_46,
+    input [7:0] port_b_46,
+    output reg [7:0] bus_out_46
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_46 <= port_a_46;
+        else 
+            bus_out_46 <= port_b_46;
+    end
+endmodule
+"
+03_multi_driver_collisions_47,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_47_buggy.v,dataset/03_multi_driver_collisions/sample_47_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_47 (
+    input clk,
+    input [15:0] port_a_47,
+    input [15:0] port_b_47,
+    output reg [15:0] bus_out_47
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_47 <= port_a_47;
+    end
+
+    always @(negedge clk) begin
+        bus_out_47 <= port_b_47;
+    end
+endmodule
+","module driver_mod_47 (
+    input clk,
+    input [15:0] port_a_47,
+    input [15:0] port_b_47,
+    output reg [15:0] bus_out_47
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_47 <= port_a_47;
+        else 
+            bus_out_47 <= port_b_47;
+    end
+endmodule
+"
+03_multi_driver_collisions_48,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_48_buggy.v,dataset/03_multi_driver_collisions/sample_48_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_48 (
+    input clk,
+    input [15:0] port_a_48,
+    input [15:0] port_b_48,
+    output reg [15:0] bus_out_48
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_48 <= port_a_48;
+    end
+
+    always @(negedge clk) begin
+        bus_out_48 <= port_b_48;
+    end
+endmodule
+","module driver_mod_48 (
+    input clk,
+    input [15:0] port_a_48,
+    input [15:0] port_b_48,
+    output reg [15:0] bus_out_48
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_48 <= port_a_48;
+        else 
+            bus_out_48 <= port_b_48;
+    end
+endmodule
+"
+03_multi_driver_collisions_49,03_multi_driver_collisions,dataset/03_multi_driver_collisions/sample_49_buggy.v,dataset/03_multi_driver_collisions/sample_49_fixed.v,Signal driven by multiple procedural always blocks causing a synthesis short-circuit. Merged the drivers into a single block.,"module driver_mod_49 (
+    input clk,
+    input [15:0] port_a_49,
+    input [15:0] port_b_49,
+    output reg [15:0] bus_out_49
+);
+    // BUG: Multiple blocks driving the same output
+    always @(posedge clk) begin
+        bus_out_49 <= port_a_49;
+    end
+
+    always @(negedge clk) begin
+        bus_out_49 <= port_b_49;
+    end
+endmodule
+","module driver_mod_49 (
+    input clk,
+    input [15:0] port_a_49,
+    input [15:0] port_b_49,
+    output reg [15:0] bus_out_49
+);
+    // FIX: Merge logic into a single driving block
+    always @(posedge clk or negedge clk) begin
+        if (clk) 
+            bus_out_49 <= port_a_49;
+        else 
+            bus_out_49 <= port_b_49;
+    end
+endmodule
+"
