@@ -1,6 +1,5 @@
 import os
 import json
-import hashlib
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -16,15 +15,11 @@ app = Flask(__name__, static_folder='frontend', static_url_path='')
 CORS(app)
 
 UPLOAD_FOLDER = 'uploads'
-CACHE_FOLDER = 'cache'
 ALLOWED_EXTENSIONS = {'v'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['CACHE_FOLDER'] = CACHE_FOLDER
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
-if not os.path.exists(CACHE_FOLDER):
-    os.makedirs(CACHE_FOLDER)
 
 engine = VerilintCore()
 
@@ -53,21 +48,7 @@ def analyze_file():
         with open(filepath, 'r') as f:
             content = f.read()
             
-        # Optimization: Checksum caching to avoid excessive AI API calls
-        content_hash = hashlib.md5(content.encode('utf-8')).hexdigest()
-        cache_path = os.path.join(app.config['CACHE_FOLDER'], f"{content_hash}.json")
         
-        if os.path.exists(cache_path):
-            try:
-                with open(cache_path, 'r') as cf:
-                    cached_data = json.load(cf)
-                    # Re-attach filename as it might be dynamically dropped differently
-                    cached_data['filename'] = filename
-                    return jsonify(cached_data)
-            except (json.JSONDecodeError, IOError) as e:
-                # If cache is corrupted, log and simply ignore to re-calculate
-                app.logger.warning(f"Failed to read cache {cache_path}: {e}")
-            
         try:
             results = engine.run_json(content)
             
@@ -100,10 +81,7 @@ def analyze_file():
                 "violations": mapped_violations
             }
             
-            # Save mapping to cache
-            with open(cache_path, 'w') as cf:
-                json.dump(response_data, cf)
-                
+            
             return jsonify(response_data)
             
         except Exception as e:
