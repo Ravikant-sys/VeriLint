@@ -80,7 +80,14 @@ class VerilintCore:
         for violation in violations:
              issue = violation['issue']
              # AI Reasoning
-             ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'])
+             try:
+                 ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'])
+             except Exception as e:
+                 print(f"AI Failure: {e}")
+                 ai_resp = {
+                     'reasoning': "AI analysis unavailable due to network or quota error. Please check your API key.",
+                     'corrected_code': "// AI Suggestion unavailable"
+                 }
              
              results['violations'].append({
                  'rule_id': violation['rule_id'],
