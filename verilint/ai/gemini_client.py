@@ -23,7 +23,7 @@ Original Full Verilog Code Context:
 
 Respond with ONLY valid JSON containing EXACTLY two keys:
 - "reasoning": A detailed explanation of why this bug is biologically bad for synthesis/simulation, and explicitly outline the **PROBABLE FIX** (e.g. "Move the wire assignment to a separate assign block", "Add the missing elsewhere branch", "Combine the two always blocks").
-- "corrected_code": The totally refactored and fixed FULL Verilog code. Do NOT wrap it in markdown block quotes, just raw text.
+- "corrected_code": ONLY the specific refactored lines or the exact block that caused the violation. Do not output the entire file. Do NOT wrap it in markdown block quotes, just raw text.
 """
         payload = {
             "contents": [{
