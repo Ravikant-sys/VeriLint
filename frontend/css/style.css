@@ -53,3 +53,11 @@
 #scoreCircle {
     stroke-dashoffset: 502.6; /* Start with 0 progress (offset = circumference) */
 }
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(300%); }
+}
+.loading-bar-animate {
+    animation: slide 1.5s infinite linear;
+}

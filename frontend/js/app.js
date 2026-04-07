@@ -19,6 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // API CONFIG
     const API_URL = '/analyze';
 
+    // --- Loading Stream Logic ---
+    let tokenInterval;
+    
+    function startTokenCounter() {
+        let tokens = 0;
+        const tokenElem = document.getElementById('tokenCounter');
+        const statusElem = document.getElementById('loadingStatusText');
+        const statuses = [
+            'Extracting Verilog Modules...', 
+            'Constructing Abstract Syntax Tree...', 
+            'Engaging Gemini Pro heuristics...', 
+            'Analyzing multi-driver collisions...', 
+            'Validating standard compliance...', 
+            'Awaiting neural inference stream...'
+        ];
+        
+        tokenInterval = setInterval(() => {
+            tokens += Math.floor(Math.random() * 25) + 5;
+            if (tokenElem) tokenElem.innerText = tokens;
+            
+            if(Math.random() > 0.95 && statusElem) {
+                statusElem.innerText = statuses[Math.floor(Math.random() * statuses.length)];
+            }
+        }, 50);
+    }
+
+    function stopTokenCounter() {
+        clearInterval(tokenInterval);
+    }
+    // ----------------------------
+
+
     // --- Theme Management ---
     function updateThemeIcons() {
         if (htmlEl.classList.contains('dark')) {
@@ -108,6 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.classList.remove('hidden');
         // Hide uploadbtn if it was somehow visible
         uploadBtnTop.classList.add('hidden');
+        
+        // Start streaming aesthetic
+        const tokenElem = document.getElementById('tokenCounter');
+        if (tokenElem) tokenElem.innerText = '0';
+        startTokenCounter();
 
         const formData = new FormData();
         formData.append('file', file);
@@ -131,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderResults(data);
         } catch (error) {
             console.error(error);
+            stopTokenCounter();
             alert(`Error from analysis engine: ${error.message}\nMake sure your Gemini API Key is valid and the Flask server is running without timeouts.`);
             loader.classList.add('hidden');
             uploadSection.classList.remove('hidden');
@@ -138,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderResults(data) {
+        stopTokenCounter();
         loader.classList.add('hidden');
         resultsSection.classList.remove('hidden');
         
