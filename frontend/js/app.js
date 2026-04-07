@@ -65,6 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (files.length > 0) handleUpload(files[0]);
     });
 
+    // Test File click handlers
+    const testFileBtns = document.querySelectorAll('.test-file-btn');
+    testFileBtns.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const fileName = btn.getAttribute('data-file');
+            try {
+                // Determine file contents from the static folder
+                const response = await fetch(`/test_files/${fileName}`);
+                if (!response.ok) throw new Error('File not found');
+                const text = await response.text();
+                
+                // Create a virtual file object to simulate drop/upload
+                const file = new File([text], fileName, { type: "text/plain" });
+                handleUpload(file);
+            } catch (error) {
+                console.error("Error loading test file:", error);
+                alert("Failed to load the test file. Ensure it exists in the test_files directory.");
+            }
+        });
+    });
+
     fileInput.addEventListener('change', (e) => {
         if (e.target.files.length > 0) handleUpload(e.target.files[0]);
     });
