@@ -38,7 +38,7 @@ Respond with ONLY valid JSON containing EXACTLY two keys:
         req = urllib.request.Request(self.url, data=data, headers={'Content-Type': 'application/json'}, method='POST')
 
         try:
-            with urllib.request.urlopen(req, timeout=25.0) as response:
+            with urllib.request.urlopen(req, timeout=120.0) as response:
                 result = json.loads(response.read().decode('utf-8'))
                 
                 # Extract text from API response

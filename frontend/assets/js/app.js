@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Check previously saved theme or system pref
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Check previously saved theme (defaults to light mode)
+    if (localStorage.getItem('theme') === 'dark') {
         htmlEl.classList.add('dark');
     } else {
         htmlEl.classList.remove('dark');
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fileName = btn.getAttribute('data-file');
             try {
                 // Determine file contents from the static folder
-                const response = await fetch(`/test_files/${fileName}`);
+                const response = await fetch(`/assets/test_files/${fileName}`);
                 if (!response.ok) throw new Error('File not found');
                 const text = await response.text();
                 

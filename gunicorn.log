@@ -1,5 +1,0 @@
-[2026-04-07 09:12:34 +0530] [78686] [INFO] Starting gunicorn 25.3.0
-[2026-04-07 09:12:34 +0530] [78686] [INFO] Listening at: http://127.0.0.1:5000 (78686)
-[2026-04-07 09:12:34 +0530] [78686] [INFO] Using worker: sync
-[2026-04-07 09:12:34 +0530] [78688] [INFO] Booting worker with pid: 78688
-[2026-04-07 09:12:35 +0530] [78686] [INFO] Control socket listening at /run/user/1000/gunicorn.ctl
