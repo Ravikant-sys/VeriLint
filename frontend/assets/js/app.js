@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="px-2 py-0.5 bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-500 text-[10px] font-bold rounded border border-red-200 dark:border-red-500/20 uppercase tracking-wider">${v.id}</span>
                             <h4 class="text-lg font-bold text-slate-800 dark:text-white">${v.type}</h4>
                         </div>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm">Line ${v.line} &bull; ${v.explanation}</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Line ${v.line} &bull; <span class="explanation-text"></span></p>
                     </div>
                 </div>
                 
@@ -243,17 +243,23 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span>Detected Issue</span>
                             <span class="text-red-500 dark:text-red-500/50">L${v.line}</span>
                         </div>
-                        <pre class="p-4 text-sm mono text-red-600 dark:text-red-400 overflow-x-auto"><code>${v.snippet}</code></pre>
+                        <pre class="p-4 text-sm mono text-red-600 dark:text-red-400 overflow-x-auto"><code class="detected-code"></code></pre>
                     </div>
                     <div class="bg-green-50 dark:bg-green-950/20 rounded-xl overflow-hidden border border-green-200 dark:border-green-500/20">
                         <div class="px-4 py-2 bg-green-100 dark:bg-green-500/10 border-b border-green-200 dark:border-green-500/20 text-[10px] font-bold text-green-700 dark:text-green-400 uppercase flex justify-between items-center">
                             <span>AI Suggested Fix</span>
                              <span class="text-green-600 dark:text-green-500/50">Gemini Pro</span>
                         </div>
-                        <pre class="p-4 text-sm mono text-green-700 dark:text-green-300 overflow-x-auto"><code>${v.refactoring || v.suggestion}</code></pre>
+                        <pre class="p-4 text-sm mono text-green-700 dark:text-green-300 overflow-x-auto"><code class="suggested-code"></code></pre>
                     </div>
                 </div>
             `;
+            
+            // Securely assign content to prevent XSS
+            item.querySelector('.explanation-text').textContent = v.explanation;
+            item.querySelector('.detected-code').textContent = v.snippet;
+            item.querySelector('.suggested-code').textContent = v.refactoring || v.suggestion;
+            
             violationsList.appendChild(item);
         });
     }

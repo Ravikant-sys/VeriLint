@@ -32,8 +32,8 @@ class VerilintCore:
         self.engine.register_rule(DeadCodeRule())
 
         # Phase 3
-        # Use provided key or environment variable
-        self.ai_key = os.environ.get("GEMINI_API_KEY", "AIzaSyCyCP8qN0ULhmC7pDHO1j8VURAQj5BjrWU")
+        # Use strictly the environment variable
+        self.ai_key = os.environ.get("GEMINI_API_KEY")
         
         if self.ai_key:
              print("Initializing real Gemini AI Client...")

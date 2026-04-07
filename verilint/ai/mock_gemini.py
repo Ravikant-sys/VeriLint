@@ -21,25 +21,25 @@ class MockGeminiAI:
             refactored = []
             for line in context_code.split('\n'):
                 # Very rudimentary regex to swap `=` with `<=` inside always blocks as a demo
-                if not '<=' in line and '=' in line and 'if' not in line and 'else' not in line:
+                if '<=' not in line and '=' in line and 'if' not in line and 'else' not in line:
                     line = re.sub(r'([^<>=!])=([^=])', r'\1<=\2', line)
                 refactored.append(line)
             response["corrected_code"] = '\n'.join(refactored)
 
         elif rule_id == "R003":
-             response["reasoning"] = f"A rule check determined that active low reset signals should be explicitly suffixed with _n or _b. This improves team code readability."
+            response["reasoning"] = "A rule check determined that active low reset signals should be explicitly suffixed with _n or _b. This improves team code readability."
              
         elif rule_id == "R004":
-             response["reasoning"] = "Inferred latches are usually accidental and happen when a combinational always block has incomplete 'if' branches. Provide a default assignment or a matching 'else' to fix."
+            response["reasoning"] = "Inferred latches are usually accidental and happen when a combinational always block has incomplete 'if' branches. Provide a default assignment or a matching 'else' to fix."
              
-             # Example simplistic mock refactor: add an else clause assigning to 0 (default) or self.
-             lines = context_code.split('\n')
-             refactored = []
-             for line in lines:
-                 refactored.append(line)
-                 if line.strip() == "end" and "if" in context_code.split('end')[0]:
-                     # A very crude AST placeholder
-                     refactored.insert(-1, "    else\n        /* TODO: Add default assignment here to avoid latch */;")
-             response["corrected_code"] = '\n'.join(refactored)
+            # Example simplistic mock refactor: add an else clause assigning to 0 (default) or self.
+            has_if_before_end = "if" in context_code.split('end', 1)[0]
+            refactored = []
+            for line in context_code.split('\n'):
+                if line.strip() == "end" and has_if_before_end:
+                    # A very crude AST placeholder
+                    refactored.append("    else\n        /* TODO: Add default assignment here to avoid latch */;")
+                refactored.append(line)
+            response["corrected_code"] = '\n'.join(refactored)
 
         return response

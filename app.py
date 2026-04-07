@@ -64,9 +64,9 @@ def analyze_file():
                     # Re-attach filename as it might be dynamically dropped differently
                     cached_data['filename'] = filename
                     return jsonify(cached_data)
-            except Exception as e:
-                # If cache is corrupted, simply ignore and re-calculate
-                pass
+            except (json.JSONDecodeError, IOError) as e:
+                # If cache is corrupted, log and simply ignore to re-calculate
+                app.logger.warning(f"Failed to read cache {cache_path}: {e}")
             
         try:
             results = engine.run_json(content)

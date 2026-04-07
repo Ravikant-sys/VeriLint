@@ -1,12 +1,14 @@
 import http.server
 import socketserver
 import json
+import os
 from verilint.core import VerilintCore
 
 class VerilintHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        # Serve UI files by default from /ui directory
-        super().__init__(*args, directory="/home/minion/Documents/Verilint/ui", **kwargs)
+        # Serve UI files by default from frontend directory
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        super().__init__(*args, directory=os.path.join(base_dir, "frontend"), **kwargs)
 
     def do_POST(self):
         if self.path == '/analyze':
