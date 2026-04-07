@@ -1,4 +1,5 @@
 # VeriLint Core Engine
+**Live Deployment:** [https://verilint.onrender.com](https://verilint.onrender.com)
 
 VeriLint is an AI-powered Verilog static analysis and linting engine. Built on a modular architecture, it executes heuristic rulesets to prevent synthesization failure, and utilizes Google's Gemini models for dynamic structure refactoring of flawed hardware designs.
 
