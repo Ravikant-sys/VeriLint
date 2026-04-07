@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreText = document.getElementById('scoreText');
     const violationCount = document.getElementById('violationCount');
     const severityLevel = document.getElementById('severityLevel');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    let currentViolations = [];
     
     const uploadBtnTop = document.getElementById('uploadBtnTop');
     const themeToggle = document.getElementById('themeToggle');
@@ -77,6 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcons();
     });
     // ------------------------
+
+    // Filter Logic
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => {
+                b.className = "filter-btn px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs rounded-full font-semibold border border-slate-200 dark:border-slate-700 transition-colors focus:outline-none";
+            });
+            btn.className = "filter-btn px-3 py-1 bg-green-100 dark:bg-green-500/10 text-green-700 dark:text-green-400 text-xs rounded-full font-semibold border border-green-200 dark:border-green-500/20 transition-colors focus:outline-none";
+            renderViolationsList(btn.getAttribute('data-filter'));
+        });
+    });
 
     // Drag and drop handlers
     dropZone.addEventListener('click', () => fileInput.click());
@@ -216,14 +229,30 @@ document.addEventListener('DOMContentLoaded', () => {
              severityLevel.className = 'text-red-600 dark:text-red-400 font-bold px-3 py-1 bg-red-100 dark:bg-red-400/10 rounded-full text-sm';
         }
 
-        // Render Violations
+        // Filter Setup
+        currentViolations = data.violations;
+        const allBtn = document.querySelector('[data-filter="All"]');
+        if (allBtn) {
+            allBtn.click();
+        } else {
+            renderViolationsList('All');
+        }
+    }
+
+    function renderViolationsList(filter) {
         violationsList.innerHTML = '';
-        if (data.violations.length === 0) {
-            violationsList.innerHTML = '<div class="p-8 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800"><p class="text-slate-500 dark:text-slate-400">No violations found! Your design follows all guidelines.</p></div>';
+        let filtered = currentViolations;
+        
+        if (filter !== 'All') {
+            filtered = currentViolations.filter(v => v.type === filter || (filter === 'Error' && v.type === 'Critical'));
+        }
+
+        if (filtered.length === 0) {
+            violationsList.innerHTML = '<div class="p-8 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800"><p class="text-slate-500 dark:text-slate-400">No violations found matching the filter.</p></div>';
             return;
         }
 
-        data.violations.forEach(v => {
+        filtered.forEach(v => {
             const item = document.createElement('div');
             item.className = 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all card-glow';
             item.innerHTML = `
