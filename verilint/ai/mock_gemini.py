@@ -1,7 +1,7 @@
 import re
 
 class MockGeminiAI:
-    def analyze_violation(self, rule_id: str, context_code: str, issue_msg: str) -> dict:
+    def analyze_violation(self, rule_id: str, context_code: str, issue_msg: str, start_line: int, end_line: int) -> dict:
         """
         Mock AI reasoning based on predefined rule knowledge.
         In the real Phase 3, this would be an API call to Gemini.
