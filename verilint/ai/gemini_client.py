@@ -6,7 +6,7 @@ class RealGeminiAI:
     def __init__(self, api_key: str):
         self.api_key = api_key
         # Using the Gemini 3.1 Pro model endpoint
-        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:generateContent?key={self.api_key}"
+        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={self.api_key}"
 
     def analyze_violation(self, rule_id: str, context_code: str, issue_msg: str, start_line: int, end_line: int) -> dict:
         prompt = f"""
