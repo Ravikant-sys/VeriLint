@@ -9,26 +9,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreText = document.getElementById('scoreText');
     const violationCount = document.getElementById('violationCount');
     const severityLevel = document.getElementById('severityLevel');
+    
     const uploadBtnTop = document.getElementById('uploadBtnTop');
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
 
     // API CONFIG
     const API_URL = '/analyze';
+
+    // --- Theme Management ---
+    function updateThemeIcons() {
+        if (htmlEl.classList.contains('dark')) {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+
+    // Check previously saved theme or system pref
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlEl.classList.add('dark');
+    } else {
+        htmlEl.classList.remove('dark');
+    }
+    updateThemeIcons();
+
+    themeToggle.addEventListener('click', () => {
+        htmlEl.classList.toggle('dark');
+        const isDark = htmlEl.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateThemeIcons();
+    });
+    // ------------------------
 
     // Drag and drop handlers
     dropZone.addEventListener('click', () => fileInput.click());
     
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropZone.classList.add('border-indigo-500', 'bg-slate-900');
+        dropZone.classList.add('border-green-500', 'bg-slate-50', 'dark:bg-slate-900');
     });
 
     dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('border-indigo-500', 'bg-slate-900');
+        dropZone.classList.remove('border-green-500', 'bg-slate-50', 'dark:bg-slate-900');
     });
 
     dropZone.addEventListener('drop', (e) => {
         e.preventDefault();
-        dropZone.classList.remove('border-indigo-500', 'bg-slate-900');
+        dropZone.classList.remove('border-green-500', 'bg-slate-50', 'dark:bg-slate-900');
         const files = e.dataTransfer.files;
         if (files.length > 0) handleUpload(files[0]);
     });
@@ -40,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadBtnTop.addEventListener('click', () => {
         resultsSection.classList.add('hidden');
         uploadSection.classList.remove('hidden');
+        uploadBtnTop.classList.add('hidden'); // Hide when back to upload section
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -52,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show loader
         uploadSection.classList.add('hidden');
         loader.classList.remove('hidden');
+        // Hide uploadbtn if it was somehow visible
+        uploadBtnTop.classList.add('hidden');
 
         const formData = new FormData();
         formData.append('file', file);
@@ -77,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderResults(data) {
         loader.classList.add('hidden');
         resultsSection.classList.remove('hidden');
+        
+        // Show New Analysis button
+        uploadBtnTop.classList.remove('hidden');
 
         // Update Score Circular Progress
         const score = data.design_health_score;
@@ -91,50 +129,50 @@ document.addEventListener('DOMContentLoaded', () => {
         violationCount.innerText = data.violations.length;
         if (data.violations.length === 0) {
             severityLevel.innerText = 'Excellent';
-            severityLevel.className = 'text-green-400 font-bold px-3 py-1 bg-green-400/10 rounded-full text-sm';
+            severityLevel.className = 'text-green-600 dark:text-green-400 font-bold px-3 py-1 bg-green-100 dark:bg-green-400/10 rounded-full text-sm';
         } else if (data.violations.length < 3) {
              severityLevel.innerText = 'Moderate';
-             severityLevel.className = 'text-yellow-400 font-bold px-3 py-1 bg-yellow-400/10 rounded-full text-sm';
+             severityLevel.className = 'text-yellow-600 dark:text-yellow-400 font-bold px-3 py-1 bg-yellow-100 dark:bg-yellow-400/10 rounded-full text-sm';
         } else {
              severityLevel.innerText = 'Critical';
-             severityLevel.className = 'text-red-400 font-bold px-3 py-1 bg-red-400/10 rounded-full text-sm';
+             severityLevel.className = 'text-red-600 dark:text-red-400 font-bold px-3 py-1 bg-red-100 dark:bg-red-400/10 rounded-full text-sm';
         }
 
         // Render Violations
         violationsList.innerHTML = '';
         if (data.violations.length === 0) {
-            violationsList.innerHTML = '<div class="p-8 text-center bg-slate-900 rounded-3xl border border-slate-800"><p class="text-slate-400">No violations found! Your design follows all guidelines.</p></div>';
+            violationsList.innerHTML = '<div class="p-8 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800"><p class="text-slate-500 dark:text-slate-400">No violations found! Your design follows all guidelines.</p></div>';
             return;
         }
 
         data.violations.forEach(v => {
             const item = document.createElement('div');
-            item.className = 'bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all card-glow';
+            item.className = 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all card-glow';
             item.innerHTML = `
                 <div class="flex flex-col md:flex-row justify-between items-start mb-6">
                     <div>
                         <div class="flex items-center space-x-3 mb-2">
-                            <span class="px-2 py-0.5 bg-red-500/10 text-red-500 text-[10px] font-bold rounded border border-red-500/20 uppercase tracking-wider">${v.id}</span>
-                            <h4 class="text-lg font-bold text-white">${v.type}</h4>
+                            <span class="px-2 py-0.5 bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-500 text-[10px] font-bold rounded border border-red-200 dark:border-red-500/20 uppercase tracking-wider">${v.id}</span>
+                            <h4 class="text-lg font-bold text-slate-800 dark:text-white">${v.type}</h4>
                         </div>
-                        <p class="text-slate-400 text-sm">Line ${v.line} &bull; ${v.explanation}</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Line ${v.line} &bull; ${v.explanation}</p>
                     </div>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800">
-                        <div class="px-4 py-2 bg-slate-900/50 border-b border-slate-800 text-[10px] font-bold text-slate-500 uppercase flex justify-between items-center">
+                    <div class="bg-slate-50 dark:bg-slate-950 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                        <div class="px-4 py-2 bg-slate-100 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800 text-[10px] font-bold text-slate-500 uppercase flex justify-between items-center">
                             <span>Detected Issue</span>
-                            <span class="text-red-500/50">L${v.line}</span>
+                            <span class="text-red-500 dark:text-red-500/50">L${v.line}</span>
                         </div>
-                        <pre class="p-4 text-sm mono text-red-400 overflow-x-auto"><code>${v.snippet}</code></pre>
+                        <pre class="p-4 text-sm mono text-red-600 dark:text-red-400 overflow-x-auto"><code>${v.snippet}</code></pre>
                     </div>
-                    <div class="bg-indigo-950/20 rounded-xl overflow-hidden border border-indigo-500/20">
-                        <div class="px-4 py-2 bg-indigo-500/10 border-b border-indigo-500/20 text-[10px] font-bold text-indigo-400 uppercase flex justify-between items-center">
+                    <div class="bg-green-50 dark:bg-green-950/20 rounded-xl overflow-hidden border border-green-200 dark:border-green-500/20">
+                        <div class="px-4 py-2 bg-green-100 dark:bg-green-500/10 border-b border-green-200 dark:border-green-500/20 text-[10px] font-bold text-green-700 dark:text-green-400 uppercase flex justify-between items-center">
                             <span>AI Suggested Fix</span>
-                             <span class="text-indigo-500/50">Gemini Pro</span>
+                             <span class="text-green-600 dark:text-green-500/50">Gemini Pro</span>
                         </div>
-                        <pre class="p-4 text-sm mono text-indigo-300 overflow-x-auto"><code>${v.refactoring || v.suggestion}</code></pre>
+                        <pre class="p-4 text-sm mono text-green-700 dark:text-green-300 overflow-x-auto"><code>${v.refactoring || v.suggestion}</code></pre>
                     </div>
                 </div>
             `;
