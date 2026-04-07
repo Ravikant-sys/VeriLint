@@ -118,13 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            if (!response.ok) throw new Error('Analysis failed');
+            if (!response.ok) {
+                let errorMsg = 'Analysis failed';
+                try {
+                    const errData = await response.json();
+                    if (errData.error) errorMsg = errData.error;
+                } catch(e) {}
+                throw new Error(errorMsg);
+            }
 
             const data = await response.json();
             renderResults(data);
         } catch (error) {
             console.error(error);
-            alert('Error connecting to the analysis engine. Make sure the Flask server is running.');
+            alert(`Error from analysis engine: ${error.message}\nMake sure your Gemini API Key is valid and the Flask server is running without timeouts.`);
             loader.classList.add('hidden');
             uploadSection.classList.remove('hidden');
         }
