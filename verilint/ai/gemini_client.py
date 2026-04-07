@@ -5,25 +5,26 @@ import urllib.error
 class RealGeminiAI:
     def __init__(self, api_key: str):
         self.api_key = api_key
-        # Using the standard gemini-flash-latest model endpoint
-        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key={self.api_key}"
+        # Using the Gemini 3.1 Pro model endpoint
+        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={self.api_key}"
 
-    def analyze_violation(self, rule_id: str, context_code: str, issue_msg: str) -> dict:
+    def analyze_violation(self, rule_id: str, context_code: str, issue_msg: str, start_line: int, end_line: int) -> dict:
         prompt = f"""
 You are an expert Verilog reasoning engine part of the 'Verilint' linter.
 A rule violation was detected.
 
 Rule ID: {rule_id}
 Issue Message: {issue_msg}
+Failing Block Location: Lines {start_line} to {end_line}.
 
-Original Full Verilog Code Context:
+Original Full Verilog Code Context for reference:
 ```verilog
 {context_code}
 ```
 
 Respond with ONLY valid JSON containing EXACTLY two keys:
-- "reasoning": A detailed explanation of why this bug is biologically bad for synthesis/simulation, and explicitly outline the **PROBABLE FIX** (e.g. "Move the wire assignment to a separate assign block", "Add the missing elsewhere branch", "Combine the two always blocks").
-- "corrected_code": The totally refactored and fixed FULL Verilog code. Do NOT wrap it in markdown block quotes, just raw text.
+- "reasoning": A detailed explanation of why this bug is biologically bad for synthesis/simulation, and explicitly outline the **PROBABLE FIX**.
+- "corrected_code": Rewrite ONLY the specific snippet of code located between lines {start_line} and {end_line} to fix the violation. DO NOT output the full file. ONLY output the few modified lines.
 """
         payload = {
             "contents": [{
@@ -38,7 +39,7 @@ Respond with ONLY valid JSON containing EXACTLY two keys:
         req = urllib.request.Request(self.url, data=data, headers={'Content-Type': 'application/json'}, method='POST')
 
         try:
-            with urllib.request.urlopen(req, timeout=10.0) as response:
+            with urllib.request.urlopen(req, timeout=45.0) as response:
                 result = json.loads(response.read().decode('utf-8'))
                 
                 # Extract text from API response

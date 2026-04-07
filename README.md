@@ -1,55 +1,45 @@
-# Verilint Core Engine
+# VeriLint Core Engine
+**Live Deployment:** [https://verilint.onrender.com](https://verilint.onrender.com)
 
-Verilint is an advanced, AI-powered Verilog static analysis and linting engine. It goes substantially beyond simple syntax checking by actively compiling context block models, applying robust architecture heuristics to prevent synthesization failure, and directly communicating with Google's Gemini AI to dynamically orchestrate structural refactoring of flawed hardware designs.
+VeriLint is an AI-powered Verilog static analysis and linting engine. Built on a modular architecture, it executes heuristic rulesets to prevent synthesization failure, and utilizes Google's Gemini models for dynamic structure refactoring of flawed hardware designs.
 
-## 🚀 Architecture Pipeline
+## Architecture
 
-Verilint evaluates codebase stability across three deterministic phases:
+VeriLint evaluates logic stability across three distinct execution phases:
 
-1. **Phase 1: Tokenization/Parsing Pipeline**
-   Extracts `always`, `initial`, `module_decl` and `global` procedural blocks from source code while actively mapping topological code scope using balanced traversal rules.
-   
-2. **Phase 2: Verilint Rule Engine**
-   A rigorous suite of internal Python logic rules parses the execution flow to identify dangerous simulation patterns before synthesis generation.
-   
-3. **Phase 3: Deep AI Refactoring Engine**
-   Using the `RealGeminiAI` framework (leveraging `gemini-flash-latest`), natively generated violations are seamlessly passed into an LLM context window against the complete Verilog codebase interface for deep-state reasoning. The AI strictly computes the most logical "Probable Fix" strategy and emits a flawlessly patched code snippet.
+1. **Token/AST Parser**: Parses `always`, `initial`, `module`, and `global` block regions from the hardware source code while mapping topological scopes.
+2. **Deterministic Rules Engine**: Python-based static analysis engine that checks execution flow to isolate fatal simulation and synthesization parameters.
+3. **LLM Patch Generation**: Integrates the `RealGeminiAI` framework via REST. Violations are extracted alongside internal AST mappings into the Gemini-Flash endpoint to synthesize "Probable Fixes".
+   - *Caching Layer*: Includes a local MD5 exact-match heuristic caching mechanism. Any duplicate code queries instantly load pre-compiled JSON AI models locally from disk `/cache` to eliminate redundant token execution.
+   - *Timeouts*: API boundary operates on an extended 120-second timeout allocation to prevent Gunicorn processing timeouts on complex design networks.
 
----
+## Core Rule Definitions
 
-## 🛡️ Active Rule Checks
+* `[R001] Mixed Assignments`: Identifies combinations of blocking (`=`) and non-blocking (`<=`) syntax within the identical `always` sequential block limit.
+* `[R002] Naming Conventions`: Enforces explicit `_n` or `_b` suffix arrays for active-low operations (`rst`, `clear`).
+* `[R003] Inferred Latches`: Traps combinational constructs running incomplete IF/CASE routing layers missing fallback `default` logic.
+* `[R004] Syntax Checker`: Validates generic module encapsulation layout matching definitions recursively.
+* `[R005] Multi-Driver Collisions`: Traverses logical boundaries preventing solitary nets from being concurrently written by asynchronous multi-always drivers.
+* `[R006] Procedural Wire Assignments`: Forbids sequential behavioral procedures (`always`) from assigning values to continuous target nets (`wire`).
 
-* **[R001] Mixed Assignments**: Detects catastrophic trace conditions involving blocking (`=`) and non-blocking (`<=`) logic occurring sequentially within the same `always` evaluation block.
-* **[R002] Naming Conventions**: Enforces `_n` or `_b` suffix structures for `rst` and `clear` signals.
-* **[R003] Inferred Latches**: Detects incomplete `if` or `case` combinational branching paths (e.g., missing `else` logic, or missing `default` labels) that incorrectly infer memory retention.
-* **[R004] Syntax Checker**: Recursively searches instantiations globally to trap deeply nested missing terminators (missing `;` or `,`).
-* **[R005] Multi-Driver Collisions**: Traverses asynchronous global states to prevent the identical hardware signal from being forcibly driven by multiple, fiercely conflicting `always` procedural blocks.
-* **[R006] Procedural Wire Assignments**: Stops synthesization crashes generated when a state machine directly assigns combinatorial data to a `wire` trace inside a chronological loop.
-* **[R007] Sensitivity Mismatches**: Reconciles asynchronous signal dependencies (e.g. `posedge clk`) missing from implicit sensitivity declarations.
-* **[R009] Unused Ports**: Resolves input/output module interfaces that are completely untethered from processing logic globally.
-* **[R010] Dead Code & Unreachable FSMs**: Aggressive algorithmic validation targeting defined Parameter States that are unreachable due to incomplete procedural LHS state transitions (Dead State Logic).
+## Deployment & Local Execution
 
----
+The application is unified into a monolithic Flask web service (`app.py`), statically routing the frontend components under `/frontend/assets/`. 
 
-## 🌐 Web Server & UI 
+### Local Run Environment
+1. Ensure your `.env` contains `GEMINI_API_KEY=<YOUR_KEY>`.
+2. Build Python requirements: `pip install -r requirements.txt`.
+3. Launch via Gunicorn: `gunicorn app:app --timeout 120`.
+4. The service will spin up on `127.0.0.1:8000`.
 
-Verilint comes fully equipped with a modern, Glassmorphism-themed dynamic Localhost Router. 
+### Production Deployment (Render)
+The repository contains a standard `render.yaml` infrastructure-as-code Blueprint explicitly configuring the Python environment. Connect the repository to your Render Dashboard via the Blueprint specification; no native Dockerfiles are required. Define `GEMINI_API_KEY` in the Render environment settings to successfully interact with the phase 3 engine.
 
-**To Start the Web UI Engine:**
-```bash
-cd Verilint
-python server.py
-```
-*Navigate to `http://localhost:8000` to access the Visual Inspector GUI.* The frontend automatically binds to the Python Engine through local REST networking, dynamically piping Verilog syntax data directly into the Phase 3 LLM and visualizing precise `Line-by-Line` bounding UI badges!
+## Model Benchmarking Suite
 
----
+VeriLint provides a utility dataset aggregation script designed for external AI training model verification.
 
-## 📊 Benchmark Dataset Generation Suite
-
-If you want to train alternative LLM pipelines onto the Verilint Framework, a localized benchmark testbed can be spun up automatically.
-
-**Generate Test Suite Data:**
 ```bash
 python generate_dataset.py
 ```
-This generates an automated `dataset.csv` payload holding mapped logical string context between hundreds of procedurally generated buggy Verilog modules (multi-driver crashes, inferred latches, etc) securely alongside their flawless algorithmic refactored fixes!
+This generates a targeted `dataset.csv` holding structural AST bug patterns correlated natively with syntactically flawless refactorings intended to benchmark downstream Large Language Models.

@@ -1,0 +1,63 @@
+/* Custom Animations and Global Styles */
+@font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Glassmorphism utility */
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Custom transitions */
+.transition-all {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}
+
+/* Card hover glow */
+.card-glow:hover {
+    box-shadow: 0 0 30px rgba(79, 70, 229, 0.1);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Dashboard Score Progress Animation */
+#scoreCircle {
+    stroke-dashoffset: 502.6; /* Start with 0 progress (offset = circumference) */
+}
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(300%); }
+}
+.loading-bar-animate {
+    animation: slide 1.5s infinite linear;
+}

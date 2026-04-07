@@ -32,8 +32,8 @@ class VerilintCore:
         self.engine.register_rule(DeadCodeRule())
 
         # Phase 3
-        # Use provided key or environment variable
-        self.ai_key = os.environ.get("GEMINI_API_KEY", "AIzaSyCyCP8qN0ULhmC7pDHO1j8VURAQj5BjrWU")
+        # Use strictly the environment variable
+        self.ai_key = os.environ.get("GEMINI_API_KEY")
         
         if self.ai_key:
              print("Initializing real Gemini AI Client...")
@@ -63,7 +63,7 @@ class VerilintCore:
              # PHASE 3: AI Refactoring
              print("\n   --- PHASE 3: AI Reasoning & Refactoring ---")
              # Pass the FULL verilog code so AI has cross-block awareness
-             ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'])
+             ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'], violation.get('start_line', 1), violation.get('end_line', 1))
              print(f"   Reasoning: {ai_resp['reasoning']}")
              print("   Refactored Code Snippet:\n   " + ai_resp['corrected_code'].replace('\n', '\n   '))
              print("-" * 50)
@@ -80,7 +80,14 @@ class VerilintCore:
         for violation in violations:
              issue = violation['issue']
              # AI Reasoning
-             ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'])
+             try:
+                 ai_resp = self.ai.analyze_violation(violation['rule_id'], verilog_code, issue['message'], violation.get('start_line', 1), violation.get('end_line', 1))
+             except Exception as e:
+                 print(f"AI Failure: {e}")
+                 ai_resp = {
+                     'reasoning': "AI analysis unavailable due to network or quota error. Please check your API key.",
+                     'corrected_code': "// AI Suggestion unavailable"
+                 }
              
              results['violations'].append({
                  'rule_id': violation['rule_id'],
